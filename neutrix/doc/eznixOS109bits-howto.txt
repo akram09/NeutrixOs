@@ -1,0 +1,87 @@
+Simple DEB packaging Howto
+
+
+--------------------------------------
+
+1. Set the date variable
+
+UDATE=$(date +%Y%m%d)
+
+2. Set working directory
+
+WKDIR="$(pwd)"
+
+--------------------------------------
+
+3. Decide on the name of your package. Standard debian notation is all lowercase in the following format
+
+<project>_<major version>.<minor version>-<package revision>:
+
+Code:
+neutrixOSbits_$UDATE-1
+
+--------------------------------------
+
+4. Create a directory in which to make your package. The name should be the same as the package name.
+
+Code:
+mkdir neutrixOSbits_$UDATE-1
+
+--------------------------------------
+
+5. Put the files of your program where they would be installed to on a system. The packaging directory is the root of the files system.
+
+Code:
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all/usr/local/bin
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/doc/neutrixOS
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all/DEBIAN
+
+cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/hooks $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/icons $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/launchers $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/livebuild $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/scripts $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/sources $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/neutrixOSbits $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/doc $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/splash $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/doc/neutrixOS/
+cp $WKDIR/neutrixBuster/neutrixOSbits/postinst $WKDIR/neutrixOSbits_$UDATE-1_all/DEBIAN/
+cp $WKDIR/neutrixBuster/bldneutrixBuster $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOSbits_$UDATE-1_all/usr/local/bin/
+
+--------------------------------------
+
+6. Create a special metadata file with which the package manager will
+install your program...
+
+Code:
+mkdir $WKDIR/neutrixOSbits_$UDATE-1/DEBIAN
+mousepad $WKDIR/neutrixOSbits_$UDATE-1/DEBIAN/control
+
+Code:
+Package: neutrixOSbits
+Version: $UDATE-1
+Section: base
+Essential: no
+Priority: optional
+Architecture: all
+Depends: live-build, curl, wget, apt-transport-https, dirmngr
+Maintainer: neutrix <https://sourceforge.net/projects/neutrixos/>
+Description: neutrixOSbits
+ Updated neutrixOS documentation and scripts
+
+--------------------------------------
+
+7. Make the package:
+
+Code:
+dpkg-deb --build neutrixOSbits_$UDATE-1_all
+md5sum neutrixOSbits_$UDATE-1_all.deb > neutrixOSbits_$UDATE-1_all.md5
+
+
+# neutrixOSbits.txt -- Revision: 109r1 -- by neutrix (https://sourceforge.net/projects/neutrixos/)
+# (GNU/General Public License version 3.0)

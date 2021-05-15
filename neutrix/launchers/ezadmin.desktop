@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=EZ Admin Tool
+Comment=ezadmin tool
+Categories=System;
+Keywords=System;
+Exec=pkexec /usr/local/bin/ezadmin
+Icon=/usr/share/icons/default/lava-lamp.png
+Path=/usr/local/bin
+Terminal=true
+StartupNotify=false

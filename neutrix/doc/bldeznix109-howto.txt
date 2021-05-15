@@ -1,0 +1,168 @@
+Step by Step Live-Build - AMD64 Architecture Example
+
+-----------------------------------
+
+Suggested location for the build staging folder:
+
+  /neutrixOS -- build folder
+
+
+Suggested location for the collection of preparation files and packages:
+
+  /neutrixBuster  -- files location
+
+
+
+The build procedure begins below. Copy and paste each command exactly 
+unless you know what you are doing and are comfortable making changes
+
+---------- BEGIN HERE ------------
+
+
+----------------------------------
+
+Step 1: (as ROOT) - Assign the variable WKDIR the output of pwd
+
+# WKDIR="$(pwd)"
+
+----------------------------------
+
+Step 2: (as ROOT) - Create the build staging folder and cd into it
+
+# mkdir neutrixOS
+
+# cd neutrixOS
+
+----------------------------------
+
+Step 3: (as ROOT) - Set up the live-build config
+
+lb config --binary-images iso-hybrid --mode debian --architectures amd64 --linux-flavours amd64 --distribution buster --archive-areas "main contrib non-free" --updates true --security true --cache true --apt-recommends true --debian-installer live --debian-installer-gui true --win32-loader false --iso-application neutrixOS --iso-preparer neutrix-https://sourceforge.net/projects/neutrixos/ --iso-publisher neutrix-https://sourceforge.net/projects/neutrixos/ --iso-volume neutrixOS
+
+# If the Debian Installer does not work, try inserting 	--debian-installer-distribution daily into the lb config options
+
+----------------------------------
+
+Step 4: (as ROOT) - Pass the desktop and packages to the live-build config
+
+echo task-xfce-desktop > $WKDIR/neutrixOS/config/package-lists/desktop.list.chroot
+
+echo aqemu haveged less orage gdebi galculator grsync psensor synaptic gparted bleachbit flac faad faac mjpegtools x265 x264 mpg321 ffmpeg streamripper sox mencoder dvdauthor twolame lame asunder aisleriot gnome-mahjongg gnome-chess dosbox filezilla libxvidcore4 vlc obs-studio soundconverter hplip-gui cdrdao frei0r-plugins htop jfsutils xfsprogs ntfs-3g cdtool mtools gthumb gimp clonezilla testdisk numix-gtk-theme greybird-gtk-theme breeze-icon-theme breeze-gtk-theme xorriso cdrskin p7zip-full p7zip-rar keepassx hardinfo inxi gnome-disk-utility simplescreenrecorder thunderbird chromium simple-scan remmina arc-theme gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-plugins-good gnome-system-tools dos2unix dialog papirus-icon-theme faenza-icon-theme liferea transmission-gtk handbrake handbrake-cli audacity python-glade2 rar unrar cifs-utils fuse gvfs-fuse gvfs-backends gvfs-bin pciutils squashfs-tools syslinux syslinux-common dosfstools isolinux live-build fakeroot linux-headers-amd64 lsb-release menu build-essential dkms curl wget iftop apt-transport-https dirmngr nvidia-detect openvpn network-manager-openvpn openvpn-systemd-resolved libqt5opengl5 zulumount-gui zulucrypt-gui zulupolkit neofetch xscreensaver firmware-linux firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-bnx2 firmware-bnx2x firmware-brcm80211 firmware-ipw2x00 firmware-intelwimax firmware-iwlwifi firmware-libertas firmware-netxen firmware-zd1211 gnome-nettool guvcview > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
+
+echo grub-common grub2-common grub-pc-bin efibootmgr grub-efi-amd64 grub-efi-amd64-bin grub-efi-amd64-signed grub-efi-ia32-bin libefiboot1 libefivar1 mokutil shim-helpers-amd64-signed shim-signed-common shim-unsigned > $WKDIR/neutrixOS/config/package-lists/grubuefi.list.binary
+
+# Uncomment below line include Broadcom wireless drivers
+# echo b43-fwcutter firmware-b43-installer firmware-b43legacy-installer  > $WKDIR/neutrixOS/config/package-lists/wifidrivers.list.chroot
+
+# Uncomment below line for calamares installer
+# echo calamares calamares-settings-debian > $WKDIR/neutrixOS/config/package-lists/calamares.list.chroot
+
+----------------------------------
+
+Step 5: (as ROOT) - Make folders in the chroot 
+
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/neutrixOS
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/desktop-base
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications
+mkdir -p $WKDIR/neutrixOS/config/hooks/normal
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop
+
+# Uncomment below line for calamares installer
+# mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding
+
+Step 6: (as ROOT) - Copy files into the chroot and live-build config
+
+cp -r $WKDIR/neutrixBuster $WKDIR/neutrixOS/config/includes.chroot/usr/share/neutrixOS/neutrixBuster
+cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
+cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
+cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
+cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin/
+cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS/
+cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/desktop-base/
+cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
+cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/
+ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop/
+
+# Uncomment below three lines for calamares installer
+# cp $WKDIR/neutrixBuster/calamares/settings.conf $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/settings.conf
+# cp $WKDIR/neutrixBuster/calamares/usr/share/applications/install-debian.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/install-debian.desktop
+# cp -r $WKDIR/neutrixBuster/calamares/branding/neutrixos $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding/neutrixos
+
+
+# Uncomment below line IF you wish to include deb packages from misc64 folder
+# cp $WKDIR/neutrixBuster/misc64/* $WKDIR/neutrixOS/config/packages.chroot/
+
+-----------------------------------
+
+Step 7: (as ROOT) - Start the build process
+
+# lb build
+
+-----------------------------------
+
+Step 8: (CHROOT) - Wait for the build to complete. The ISO will be inside the build folder
+
+-----------------------------------
+
+
+--- This is the end of the neutrixOS build process ---
+
+
+
+
+-----------------------------------
+
+Something to experiment with if you feel adventurous is automating the live build process. Below are some ideas how to do this. What follows below is not implemented in the instructions above and any attempt to use the auto script examples will require changing the neutrixOS build process. Proceed at your own risk. :)
+
+
+--------- Automating Live Build ------------
+
+Why use auto scripts? What do they do?
+
+The lb config command stores the options you pass to it in config/* files along with many other options set to default values. If you run lb config again, it will not reset any option that was defaulted based on your initial options. So, for example, if you run lb config again with a new value for --binary-images, any dependent options that were defaulted for the old image type may no longer work with the new ones. Nor are these files intended to be read or edited. They store values for over a hundred options, so nobody, let alone yourself, will be able to see in these which options you actually specified. And finally, if you run lb config, then upgrade live-build and it happens to rename an option, config/* would still contain variables named after the old option that are no longer valid.
+
+For all these reasons, auto/* scripts will make your life easier. They are simple wrappers to the lb config, lb build and lb clean commands that are designed to help you manage your configuration. The auto/config script stores your lb config command with all desired options, the auto/clean script removes the files containing configuration variable values, and the auto/build script keeps a build.log of each build. Each of these scripts is run automatically every time you run the corresponding lb command. By using these scripts, your configuration is easier to read and is kept internally consistent from one revision to the next. Also, it will be much easier for you identify and fix options which need to change when you upgrade live-build after reading the updated documentation.
+
+Use example auto scripts
+
+For your convenience, live-build comes with example auto shell scripts to copy and edit. Start a new, default configuration, then copy the examples into it:
+
+$ mkdir build && cd build && lb config
+$ mkdir auto
+$ cp /usr/share/doc/live-build/examples/auto/* auto/
+
+Edit auto/config, adding any options as you see fit. For instance:
+
+#!/bin/sh
+lb config noauto \
+	--binary-images iso-hybrid \
+	--mode debian \
+	--architectures amd64 \
+	--linux-flavours amd64 \
+	--distribution buster \
+	--archive-areas "main contrib non-free" \
+	--updates true \
+	--security true \
+	--cache true \
+	--apt-recommends true \
+	--debian-installer live \
+	--debian-installer-gui true \
+	--win32-loader false \
+	--iso-application neutrixOS \
+	--iso-prep1arer neutrix-https://sourceforge.net/projects/neutrixos/ \
+	--iso-publisher neutrix-https://sourceforge.net/projects/neutrixos/ \
+	--iso-volume neutrixOS \
+     "${@}"
+
+Now, each time you use lb config, auto/config will reset the configuration based on these options. When you want to make changes to them, edit the options in this file instead of passing them to lb config. When you use lb clean, auto/clean will clean up the config/* files along with any other build products. And finally, when you use lb build, a log of the build will be written by auto/build in build.log.
+
+Note: A special noauto parameter is used here to suppress another call to auto/config, thereby preventing infinite recursion. Make sure you don't accidentally remove it when making edits. Also, take care to ensure when you split the lb config command across multiple lines for readability, as shown in the example above, that you don't forget the backslash (\) at the end of each line that continues to the next.
+
+---------------------------------------------
+
+# bldneutrixBuster-howto.txt -- Revision: 109r1 -- by neutrix (https://sourceforge.net/projects/neutrixos/)
+# (GNU/General Public License version 3.0)

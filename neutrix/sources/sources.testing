@@ -1,0 +1,11 @@
+# Main
+deb https://deb.debian.org/debian/ testing main contrib non-free
+# deb-src https://deb.debian.org/debian/ testing main contrib non-free
+
+# Updates
+deb https://deb.debian.org/debian/ testing-updates main contrib non-free
+# deb-src https://deb.debian.org/debian/ testing-updates main contrib non-free
+
+# Security
+deb https://deb.debian.org/debian-security testing-security main
+# deb-src https://deb.debian.org/debian-security testing-security main

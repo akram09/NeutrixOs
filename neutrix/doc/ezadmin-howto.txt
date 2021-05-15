@@ -1,0 +1,111 @@
+	EZADMIN HOWTO
+
+This is a custom built script to perform various tasks on neutrixOS. You can run the ezadmin script as root to perform its functions. SU to root in a terminal and issue the command: "ezadmin" to execute the script. Read the documentation for the ezadmin script BEFORE using it. The functions are serious and the changes are not easy to reverse once done.
+
+
+	EZ Admin Menu:
+
+#################################################
+#                                               #
+# -------------------                           #
+#  EZ Admin Menu:                               #
+# -------------------                           #
+#                                               #
+#  (a) Add Myself to Sudo Group                 #
+#       (Logout & Login to take effect)         #
+#  (b) Optimize Sources	& Update Repos          #
+#  (c) Update Youtube-dl to latest version      #
+#  (d) Enable systemd-resolved service          #
+#  (e) Install or upgrade Firefox Latest        #
+#  (f) Install newest kernel from backports     #
+#       (Reboot Required)                       #
+#                                               #
+#  (x) Exit                                     #
+#                                               #
+# Please enter your choice:                     #
+#                                               #
+#################################################
+
+
+Select a|A to add yourself to the sudo group, allowing the use of 'sudo' to gain administrative privileges. Logout and Login is required to take effect.
+
+Select b|B to optimize your repositories to Debian's DNS based redirection system for automatically picking closer mirrors. The Stretch Backports repositories are added as well. Use can use Synaptic or your favorite text editor to customize the repositories if you wish.
+
+Select c|C to update youtube-dl to the latest version from the developer, replacing the old version.
+
+Select d|D to enable the systemd-resolved service. This enables the resolved caching features, improving DNS resolution performance.
+
+Select e|E to install and/or upgrade the latest Firefox Latest.
+
+Select f|F to install the newest kernel from backports.
+
+Select x|X to exit the menu and return to the command prompt. Reboot your system after performing any of the steps and in-between multiple steps just to be safe.
+
+
+-------------------------------------------------------------------
+
+	Functions
+
+-------------------------------------------------------------------
+
+# Add first user to sudo group
+
+read -p "Type you user name, be exact and press Enter: " ANS
+usermod -aG sudo $ANS
+echo "Press any key to continue..."
+sleep 2
+
+-------------------------------------------------------------------
+
+# Optimize mirrors and add contrib and non-free to sources.list
+
+cp /etc/apt/sources.list /etc/apt/sources.list.b4optimize
+cp /usr/share/neutrixOS/neutrixBuster/sources/sources.buster /etc/apt/sources.list
+cp /usr/share/neutrixOS/neutrixBuster/sources/preferences /etc/apt/preferences
+cp /usr/share/neutrixOS/neutrixBuster/sources/apt.conf /etc/apt/apt.conf
+
+apt-get -y update
+
+-------------------------------------------------------------------
+
+# Update Youtube-dl to latest version
+
+curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/bin/youtube-dl
+chmod a+rx /usr/bin/youtube-dl
+
+-------------------------------------------------------------------
+
+# Enable systemd-resolved service
+
+systemctl enable systemd-resolved.service
+systemctl start systemd-resolved.service
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf 
+
+-------------------------------------------------------------------
+
+# Install and/or upgrade the latest Firefox Latest
+
+if [ -d "/opt/FFDL" ]; then rm -r /opt/FFDL
+fi
+mkdir /opt/FFDL
+if [ -d "/opt/moz" ]; then rm -r /opt/moz
+fi
+mkdir /opt/moz
+wget -O /opt/FFDL/FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+tar xjf /opt/FFDL/FirefoxSetup.tar.bz2 -C /opt/moz/
+cp /usr/share/neutrixOS/neutrixBuster/launchers/Firefox-Latest.desktop /usr/share/applications/Firefox-Latest.desktop
+rm -r /opt/FFDL
+
+------------------------------------------------------------------
+
+# Install the newest kernel from backports
+
+apt-get -y install -t buster-backports linux-image-amd64 linux-headers-amd64
+apt-get -y install -t buster-backports firmware-linux firmware-linux-nonfree firmware-misc-nonfree
+apt-get -y install -t buster-backports firmware-realtek firmware-atheros firmware-bnx2 firmware-bnx2x firmware-brcm80211 firmware-ipw2x00 firmware-intelwimax firmware-iwlwifi firmware-libertas firmware-netxen firmware-zd1211
+
+------------------------------------------------------------------
+
+
+# ezadmin-howto.txt -- Revision: 109r1 -- by neutrix (https://sourceforge.net/projects/neutrixos/)
+# (GNU/General Public License version 3.0)

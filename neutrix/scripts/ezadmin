@@ -1,0 +1,150 @@
+#!/bin/bash
+#
+# ezadmin -- Revision: 109r1 -- by neutrix (https://sourceforge.net/projects/neutrixos/)
+# (GNU/General Public License version 3.0)
+#
+#
+# ---------------------------------------
+# Define Functions:
+# ---------------------------------------
+#
+#
+setsudo () { 
+clear
+echo " "
+read -p "Type your user name, be exact, and press Enter: " ANS
+usermod -aG sudo $ANS
+clear
+echo " "
+echo "Press any key to continue..."
+sleep 3
+}
+#
+#
+optimize () { 
+clear
+echo " "
+cp /etc/apt/sources.list /etc/apt/sources.list.b4optimize
+cp /usr/share/neutrixOS/neutrixBuster/sources/sources.buster /etc/apt/sources.list
+cp /usr/share/neutrixOS/neutrixBuster/sources/preferences /etc/apt/preferences
+cp /usr/share/neutrixOS/neutrixBuster/sources/apt.conf /etc/apt/apt.conf
+clear
+echo " "
+echo "Optimizing sources.list"
+sleep 3
+clear
+echo " "
+apt-get -y update
+sleep 3
+}
+#
+#
+ytdlup () {
+clear
+echo " "
+curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/bin/youtube-dl
+chmod a+rx /usr/bin/youtube-dl
+clear
+echo " "
+echo "Updating Youtube-dl to the latest version"
+sleep 3
+clear
+}
+#
+#
+ffadded () {
+clear
+echo " "
+bash /usr/local/bin/ffinstall
+clear
+echo " "
+echo "Firefox Current installed"
+sleep 3
+clear
+}
+#
+#
+resolved () {
+clear
+echo " "
+systemctl enable systemd-resolved.service
+systemctl start systemd-resolved.service
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+clear
+echo " "
+echo "Enabled systemd-resolved service"
+sleep 3
+clear
+}
+#
+#
+bpkernel () { 
+clear
+echo " "
+apt-get -y install -t buster-backports linux-image-amd64 linux-headers-amd64
+apt-get -y install -t buster-backports firmware-linux firmware-linux-nonfree firmware-misc-nonfree
+apt-get -y install -t buster-backports firmware-realtek firmware-atheros firmware-bnx2 firmware-bnx2x firmware-brcm80211 firmware-ipw2x00 firmware-intelwimax firmware-iwlwifi firmware-libertas firmware-netxen firmware-zd1211
+clear
+echo " "
+echo "Newest kernel from backports installed"
+sleep 3
+clear
+}
+#
+#
+# ---------------------------
+# Main Menu
+# ---------------------------
+#
+mainmenu () { while true
+do
+clear
+echo "-------------------"
+echo " EZ Admin Menu:"
+echo "-------------------"
+echo ""
+echo " (a) Add Myself to Sudo Group "
+echo "     (Logout & Login to take effect) "
+echo " (b) Optimize Sources & Update Repos "
+echo " (c) Update Youtube-dl to latest version "
+echo " (d) Enable systemd-resolved service "
+echo " (e) Install or upgrade Firefox Latest "
+echo " (f) Install newest kernel from backports "
+echo "     (Reboot Required) "
+echo ""
+echo " (x) Exit "
+echo
+read -p "Please enter your choice: " choice
+case $choice in
+  a|A) setsudo;;
+  b|B) optimize;;
+  c|C) ytdlup;;
+  d|D) resolved;;
+  e|E) ffadded;;
+  f|F) bpkernel;;
+  x|X) exit;;
+  *) echo "invalid answer, please try again";;
+#
+esac
+done
+}
+#
+# Begin main program:
+#
+mainmenu
+#
+done
+#
+# Disclaimer:
+#
+# THIS SOFTWARE IS PROVIDED BY neutrix “AS IS” AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL neutrix BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+# IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#

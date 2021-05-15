@@ -1,0 +1,55 @@
+Preparation for the bldneutrixBuster script
+
+--------------------------------------
+
+Step 1
+Install the live-build tool:
+
+# apt-get install live-build
+
+--------------------------------------
+
+Step 2
+Create a neutrixBuster directory in your home folder. Naming it differently will require customizing the instructions or bldneutrixBuster.
+
+# mkdir neutrixBuster
+
+--------------------------------------
+
+Step 3
+Collect all background images, especially the current background, and copy them to a folder inside /neutrixBuster.
+
+# cp -r backgrounds /neutrixBuster/backgrounds
+
+--------------------------------------
+
+Step 4
+Configure your desktop settings exactly the way you want to preserve them for the live system. 
+If using XFCE, all of these settings are stored in ~/.config/xfce4. Copy that folder inside /neutrixBuster. 
+
+# cp -r ~/.config/xfce4 ~/neutrixBuster/xfce4
+
+--------------------------------------
+
+Step 5
+Copy any miscelaneous deb packages into the /neutrixBuster/misc64 folder
+
+--------------------------------------
+
+Step 6
+If you have any shell scripts, place them in the /neutrixBuster/scripts folder. If you have any icons, place them in the /neutrixBuster/icons folder. If you have any hooks, place them in the /neutrixBuster/hooks folder. If you have any documentation, place the it in the /neutrixBuster/doc folder. If you need other locations, add the folder inside the /neutrixBuster folder and use the commands in the bldneutrix script as a guide to adapting the script to your needs.
+
+--------------------------------------
+
+Step 7
+The /bootloaders directory is found in /usr/share/live/build/ - copy the folder into your /neutrixBuster/ directory.
+
+# cp -r /usr/share/live/build/bootloaders /neutrixBuster/bootloaders
+
+Inside each of the subfolders within /bootloaders is a file named: splash.svg or splash.png. These are default images and can be replaced. Use whatever graphic program you like to create or edit an image for use as your boot splash. Any text you place on the image should be in the upper portion of the image - the lower half will display the boot menu. When you are satified with your image, save it as a 640x480 pixel PNG graphic file named splash.png. Copy the file into each of the subfolders of /bootloaders with the exception of the grub-legacy folder. Grub-legacy will probably never be used, but if you want to replace that image, save a copy of your splash image as a 640x480 pixel XPM graphic file and name it splash.xpm. You will need to gzip the splash.xpm file and replace the default file in the grub-legacy subfolder.
+
+--------------------------------------
+
+
+# prepare-howto.txt -- Revision: 109r1 -- by neutrix (https://sourceforge.net/projects/neutrixos/)
+# (GNU/General Public License version 3.0)
