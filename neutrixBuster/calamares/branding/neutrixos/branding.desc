@@ -1,0 +1,27 @@
+---
+componentName:   neutrixos
+welcomeStyleCalamares: true
+
+strings:
+    productName:         neutrixOS
+    shortProductName:    neutrixOS
+    version:             109
+    shortVersion:        109
+    versionedName:       neutrixOS 109
+    shortVersionedName:  neutrixOS 109
+    bootloaderEntryName: Debian
+    productUrl:          
+    supportUrl:          
+    releaseNotesUrl:     
+
+images:
+    productLogo:         "neutrixos-logo.png"
+    productIcon:         "neutrixos-logo.png"
+    productWelcome:      "welcome.png"
+
+slideshow:               "show.qml"
+
+style:
+   sidebarBackground:    "#2c3133"
+   sidebarText:          "#FFFFFF"
+   sidebarTextSelect:    "#4d7079"

@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# ffinstall -- Revision: 109r1 -- by neutrix (https://sourceforge.net/projects/neutrixos/)
+# (GNU/General Public License version 3.0)
+#
+[ -d "/opt/FFDL" ] && rm -r /opt/FFDL
+mkdir /opt/FFDL
+[ -d "/opt/moz" ] && rm -r /opt/moz
+mkdir /opt/moz
+wget -O /opt/FFDL/FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+tar xjf /opt/FFDL/FirefoxSetup.tar.bz2 -C /opt/moz/
+cp /usr/share/neutrixOS/neutrixBuster/launchers/Firefox-Latest.desktop /usr/share/applications/
+rm -r /opt/FFDL
+clear
+

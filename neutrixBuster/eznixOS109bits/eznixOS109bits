@@ -1,0 +1,83 @@
+#!/bin/bash
+#
+# neutrixOSbits -- Revision: 109r1 -- by neutrix (https://sourceforge.net/projects/neutrixos/)
+# (GNU/General Public License version 3.0)
+#
+#--------------------------------
+# Set variables
+#--------------------------------
+# Set date format
+UDATE=$(date +%Y%m%d)
+#
+# Set working directory
+WKDIR="$(pwd)"
+#
+#--------------------------------
+# define functions
+#--------------------------------
+# Make project directory structure
+ezblddir () {
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all/usr/local/bin
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/doc/neutrixOS
+mkdir -p $WKDIR/neutrixOSbits_$UDATE-1_all/DEBIAN
+}
+#
+# Copy files into project directories
+ezcpfiles () {
+cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/hooks $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/icons $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/launchers $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/livebuild $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/scripts $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/sources $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/neutrixOSbits $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/doc $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp -r $WKDIR/neutrixBuster/splash $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/doc/neutrixOS/
+cp $WKDIR/neutrixBuster/neutrixOSbits/postinst $WKDIR/neutrixOSbits_$UDATE-1_all/DEBIAN/
+cp $WKDIR/neutrixBuster/bldneutrixBuster $WKDIR/neutrixOSbits_$UDATE-1_all/usr/share/neutrixOS/neutrixBuster/
+cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOSbits_$UDATE-1_all/usr/local/bin/
+}
+#
+# Create control file
+crtcontronl () {
+cat <<EOT >> $WKDIR/neutrixOSbits_$UDATE-1_all/DEBIAN/control
+Package: neutrixOSbits
+Version: $UDATE-1
+Section: base
+Essential: no
+Priority: optional
+Architecture: all
+Depends: live-build, curl, wget, apt-transport-https, dirmngr
+Maintainer: neutrix <https://sourceforge.net/projects/neutrixos/>
+Description: neutrixOSbits
+ Updated neutrixOS documentation and scripts
+EOT
+}
+#
+#----------------------------
+# main program
+#----------------------------
+#
+ezblddir
+ezcpfiles
+crtcontronl
+# Build deb file
+dpkg-deb --build neutrixOSbits_$UDATE-1_all && md5sum neutrixOSbits_$UDATE-1_all.deb > neutrixOSbits_$UDATE-1_all.md5
+#
+# Disclaimer:
+#
+# THIS SOFTWARE IS PROVIDED BY neutrix “AS IS” AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL neutrix BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+# IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
