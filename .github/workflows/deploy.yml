@@ -19,7 +19,30 @@ jobs:
               az vm  start -n neutrix-os --resource-group virtual-machines
               export Ip_Address=$(az vm show -d -g virtual-machines -n neutrix-os --query publicIps -o tsv)
               echo $Ip_Address > ip_address.txt
+      - name: Wait till the virtual machine is up 
+        run: |
+          while [[ `az vm show -g virtual-machines -n neutrix-os --show-details --query powerState` != "VM running" ]]; do
+            sleep 5
+            PS=`az vm show -g virtual-machines -n neutrix-os --show-details --query powerState -o tsv | tr -d '"'`
+            if [[ "${PS}" == "VM running" ]]; then
+                echo "neutrix-os has started successfully..."
+                echo "--------------------------------------------------"
+                echo
+                break
+            else
+                echo "$VM is still starting..."
+            fi
+          done
       - name: Tesing env variable 
         run: cat ip_address.txt
+      
+      
+      - name: Stop the virtual machine
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.0.72
+          inlineScript: |
+              az vm stop -n neutrix-os --resource-group virtual-machines
+              rm ip_address.txt
     
   
