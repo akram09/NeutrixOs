@@ -33,13 +33,12 @@ jobs:
                 echo "$VM is still starting..."
             fi
           done
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
         with:
-          host: ${{ env.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: whoami
+          key: ${{ secrets.KEY }} 
+      - name: executing remote ssh commands using ssh key
+        run: |
+          ssh  ${{ secrets.USERNAME }}@${{ env.HOST }} "whoami"
     
   
