@@ -33,14 +33,10 @@ jobs:
                 echo "$VM is still starting..."
             fi
           done
-          echo "${{ secrets.HOST }}"
-          echo "${{ secrets.USERNAME }}"
-          echo "${{ secrets.KEY }}"
-          echo "${{ secrets.PORT }}"
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
+          host: ${{ env.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
