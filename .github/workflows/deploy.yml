@@ -18,8 +18,8 @@ jobs:
           inlineScript: |
               az vm  start -n neutrix-os --resource-group virtual-machines
               export Ip_Address=$(az vm show -d -g virtual-machines -n neutrix-os --query publicIps -o tsv)
-              echo "::set-env name=Ip_Adress::$Ip_Address"
+              echo $Ip_Address > ip_address.txt
       - name: Tesing env variable 
-        run: echo $Ip_Address
+        run: cat ip_address.txt
     
   
