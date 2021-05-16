@@ -17,6 +17,9 @@ jobs:
           azcliversion: 2.0.72
           inlineScript: |
               az vm  start -n neutrix-os --resource-group virtual-machines
-              az vm list-ip-addresses -g virtual-machines -n neutrix-os
+              export Ip_Address=$(az vm show -d -g virtual-machines -n neutrix-os --query publicIps -o tsv)
+              echo "::set-env name=Ip_Adress::$Ip_Address"
+      - name: Tesing env variable 
+        run: echo $Ip_Address
     
   
