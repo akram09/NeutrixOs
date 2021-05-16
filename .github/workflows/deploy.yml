@@ -11,12 +11,12 @@ jobs:
         uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
-      - name: Azure CLI script
+      - name: Start the virtual machine
         uses: azure/CLI@v1
         with:
           azcliversion: 2.0.72
           inlineScript: |
-              az account show
-              az storage -h
+              az vm  start -n neutrix-os --resource-group virtual-machines
+              az vm list-ip-addresses -g virtual-machines -n neutrix-os
     
   
