@@ -18,7 +18,7 @@ jobs:
           inlineScript: |
               az vm  start -n neutrix-os --resource-group virtual-machines
               export Ip_Address=$(az vm show -d -g virtual-machines -n neutrix-os --query publicIps -o tsv)
-              echo $Ip_Address > ip_address.txt
+              echo "ip_address=$Ip_Address" >> $GITHUB_ENV
       - name: Wait till the virtual machine is up 
         run: |
           while [[ `az vm show -g virtual-machines -n neutrix-os --show-details --query powerState` != "VM running" ]]; do
@@ -34,7 +34,15 @@ jobs:
             fi
           done
       - name: Tesing env variable 
-        run: cat ip_address.txt
+        run: echo "${{ env.ip_address }}"
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: whoami
       
       
       - name: Stop the virtual machine
