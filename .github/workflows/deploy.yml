@@ -48,7 +48,7 @@ jobs:
         env:
           SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.KEY }}
-          SSH_HOST: ${{ secrets.HOST }}
+          SSH_HOST: ${{ env.HOST }}
       - name: executing remote ssh commands using ssh key
         run: |
           cat ~/.ssh/config
