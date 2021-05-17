@@ -44,7 +44,10 @@ jobs:
           script: |
             su -l <<! 
             ${{ secrets.ROOT_PASS }}
-            cd githubActions/NeutrixOs/
+            cd ~/.ssh/akramGithub/
+            eval `ssh-agent -s`
+            ssh-add id_rsa
+            cd ~/githubActions/NeutrixOs/
             git pull 
             git status
             git log

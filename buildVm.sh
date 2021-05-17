@@ -5,7 +5,7 @@ MACHINENAME=$1
 VBoxManage createvm --name $MACHINENAME --ostype "Debian_64" --register --basefolder `pwd`
 #Set memory and network
 VBoxManage modifyvm $MACHINENAME --ioapic on
-VBoxManage modifyvm $MACHINENAME --memory 1024 --vram 128
+VBoxManage modifyvm $MACHINENAME --memory 3072 --vram 128
 VBoxManage modifyvm $MACHINENAME --nic1 nat
 #Create Disk and connect Debian Iso
 VBoxManage createhd --filename `pwd`/$MACHINENAME/$MACHINENAME_DISK.vdi --size 15000 --format VDI
