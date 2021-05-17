@@ -37,6 +37,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ env.HOST }}
+          command_timeout: 200m
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
@@ -45,7 +46,7 @@ jobs:
             ${{ secrets.ROOT_PASS }}
             cd githubActions/NeutrixOs/
             git pull 
-            ./buildNeutrixBuster.sh
+            ./buildNeutrixBuster.sh > /dev/tty
             !
 
   
