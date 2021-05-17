@@ -16,16 +16,16 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-              az vm  start -n neutrix-os --resource-group virtual-machines
-              export Ip_Address=$(az vm show -d -g virtual-machines -n neutrix-os --query publicIps -o tsv)
+              az vm  start -n deb2 --resource-group deb2_group
+              export Ip_Address=$(az vm show -d -g deb2_group -n deb2 --query publicIps -o tsv)
               echo "HOST=$Ip_Address" >> $GITHUB_ENV
       - name: Wait till the virtual machine is up 
         run: |
-          while [[ `az vm show -g virtual-machines -n neutrix-os --show-details --query powerState` != "VM running" ]]; do
+          while [[ `az vm show -g deb2_group -n deb2 --show-details --query powerState` != "VM running" ]]; do
             sleep 5
-            PS=`az vm show -g virtual-machines -n neutrix-os --show-details --query powerState -o tsv | tr -d '"'`
+            PS=`az vm show -g deb2_group -n deb2 --show-details --query powerState -o tsv | tr -d '"'`
             if [[ "${PS}" == "VM running" ]]; then
-                echo "neutrix-os has started successfully..."
+                echo "deb2 has started successfully..."
                 echo "--------------------------------------------------"
                 echo
                 break
@@ -33,17 +33,13 @@ jobs:
                 echo "$VM is still starting..."
             fi
           done
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/neutrix.key
-          chmod 400 ~/.ssh/neutrix.key
-        env:
-          SSH_KEY: ${{ secrets.KEY }}
       - name: executing remote ssh commands using ssh key
-        run: |
-          cat ~/.ssh/neutrix.key
-
-          ssh -vvv -i ~/.ssh/neutrix.key ${{ secrets.USERNAME }}@${{ env.HOST }}  "whoami"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: whoami
     
   
