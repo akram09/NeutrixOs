@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh/
           echo "$SSH_KEY" > ~/.ssh/neutrix.key
-          chmod 600 ~/.ssh/neutrix.key
+          chmod 400 ~/.ssh/neutrix.key
           cat >>~/.ssh/config <<END
           Host neutrix
             HostName $SSH_HOST
