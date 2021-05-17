@@ -45,6 +45,7 @@ jobs:
             IdentityFile ~/.ssh/neutrix.key
             StrictHostKeyChecking no
           END
+          chmod 400 ~/.ssh/config
         env:
           SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.KEY }}
