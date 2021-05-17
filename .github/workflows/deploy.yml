@@ -47,8 +47,11 @@ jobs:
             cd githubActions/NeutrixOs/
             rm -rf neutrixOs 
             git pull 
+            git status
+            git logs 
             ./buildNeutrixBuster.sh 
             cd neutrixOs
+            ls -la > /dev/tty
             mv live-image-amd64.hybrid.iso NeutrixOs-${{ github.run_number }}.iso
             cp ../buildVm.sh .
             ../buildVm.sh NeutrixOs-${{ github.run_number }}
