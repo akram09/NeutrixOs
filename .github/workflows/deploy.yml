@@ -1,6 +1,9 @@
 name: neutrix-os-deployment
 
-on: [ push ]
+on:
+  push:
+    branches:
+      - deploy
 
 jobs:
   deploy:
@@ -48,9 +51,8 @@ jobs:
             eval `ssh-agent -s`
             ssh-add id_rsa
             cd ~/githubActions/NeutrixOs/
+            rm -rf neutrixOS
             git pull 
-            git status
-            git log
             ./buildNeutrixBuster.sh 
             cd neutrixOS
             mv live-image-amd64.hybrid.iso neutrixOS-${{ github.run_number }}.iso
