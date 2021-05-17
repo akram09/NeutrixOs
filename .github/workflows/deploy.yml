@@ -53,6 +53,6 @@ jobs:
       - name: executing remote ssh commands using ssh key
         run: |
           cat ~/.ssh/config
-          ssh  neutrix "whoami"
+          ssh -vvv neutrix "whoami"
     
   
