@@ -45,11 +45,11 @@ jobs:
             su -l <<! 
             ${{ secrets.ROOT_PASS }}
             cd githubActions/NeutrixOs/
-            rm -rf neutrixOS 
             git pull 
             git status
             git log
             ./buildNeutrixBuster.sh 
+            ls 
             mv live-image-amd64.hybrid.iso neutrixOS-${{ github.run_number }}.iso
             cp ../buildVm.sh .
             ./buildVm.sh neutrixOS-${{ github.run_number }}
