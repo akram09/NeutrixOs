@@ -33,7 +33,7 @@ jobs:
                 echo "$VM is still starting..."
             fi
           done
-      - name: executing remote ssh commands using ssh key
+      - name: Creating the Os and setting Up VM entry 
         uses: appleboy/ssh-action@master
         with:
           host: ${{ env.HOST }}
@@ -45,8 +45,13 @@ jobs:
             su -l <<! 
             ${{ secrets.ROOT_PASS }}
             cd githubActions/NeutrixOs/
+            rm -rf neutrixOs 
             git pull 
             ./buildNeutrixBuster.sh 
+            cd neutrixOs
+            mv live-image-amd64.hybrid.iso NeutrixOs-${{ github.run_number }}.iso
+            cp ../buildVm.sh .
+            ../buildVm.sh NeutrixOs-${{ github.run_number }}
             !
 
   
