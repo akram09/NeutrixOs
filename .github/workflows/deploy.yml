@@ -46,7 +46,7 @@ jobs:
             ${{ secrets.ROOT_PASS }}
             cd githubActions/NeutrixOs/
             git pull 
-            ./buildNeutrixBuster.sh > /dev/tty
+            ./buildNeutrixBuster.sh 
             !
 
   
