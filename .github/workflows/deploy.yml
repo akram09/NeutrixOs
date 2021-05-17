@@ -1,6 +1,9 @@
 name: neutrix-os-deployment
 
-on: [ push ]
+on:
+  push:
+    branches:
+      - deploy
 
 jobs:
   deploy:
@@ -11,12 +14,50 @@ jobs:
         uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
-      - name: Azure CLI script
+      - name: Start the virtual machine
         uses: azure/CLI@v1
         with:
           azcliversion: 2.0.72
           inlineScript: |
-              az account show
-              az storage -h
-    
+              az vm  start -n deb2 --resource-group deb2_group
+              export Ip_Address=$(az vm show -d -g deb2_group -n deb2 --query publicIps -o tsv)
+              echo "HOST=$Ip_Address" >> $GITHUB_ENV
+      - name: Wait till the virtual machine is up 
+        run: |
+          while [[ `az vm show -g deb2_group -n deb2 --show-details --query powerState` != "VM running" ]]; do
+            sleep 5
+            PS=`az vm show -g deb2_group -n deb2 --show-details --query powerState -o tsv | tr -d '"'`
+            if [[ "${PS}" == "VM running" ]]; then
+                echo "deb2 has started successfully..."
+                echo "--------------------------------------------------"
+                echo
+                break
+            else
+                echo "$VM is still starting..."
+            fi
+          done
+      - name: Creating the Os and setting Up VM entry 
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.HOST }}
+          command_timeout: 200m
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            su -l <<! 
+            ${{ secrets.ROOT_PASS }}
+            cd ~/.ssh/akramGithub/
+            eval `ssh-agent -s`
+            ssh-add id_rsa
+            cd ~/githubActions/NeutrixOs/
+            rm -rf neutrixOS
+            git pull 
+            ./buildNeutrixBuster.sh 
+            cd neutrixOS
+            mv live-image-amd64.hybrid.iso neutrixOS-${{ github.run_number }}.iso
+            cp ../buildVm.sh .
+            ./buildVm.sh neutrixOS-${{ github.run_number }}
+            !
+
   
