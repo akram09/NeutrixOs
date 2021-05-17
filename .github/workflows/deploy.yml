@@ -51,6 +51,7 @@ jobs:
           SSH_HOST: ${{ secrets.HOST }}
       - name: executing remote ssh commands using ssh key
         run: |
+          cat ~/.ssh/config
           ssh  neutrix "whoami"
     
   
