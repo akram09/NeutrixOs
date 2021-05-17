@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            su -l <<! >/dev/null 2>&1
+            su -l <<! 
             ${{ secrets.ROOT_PASS }}
             cd githubActions/NeutrixOs/
             git pull 
