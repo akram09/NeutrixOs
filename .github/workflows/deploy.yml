@@ -38,23 +38,12 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$SSH_KEY" > ~/.ssh/neutrix.key
           chmod 400 ~/.ssh/neutrix.key
-          cat >>~/.ssh/config <<END
-          Host neutrix
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/neutrix.key
-            StrictHostKeyChecking no
-          END
-          chmod 400 ~/.ssh/config
         env:
-          SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.KEY }}
-          SSH_HOST: ${{ env.HOST }}
       - name: executing remote ssh commands using ssh key
         run: |
-          cat ~/.ssh/config
           cat ~/.ssh/neutrix.key
-          
-          ssh -vvv neutrix "whoami"
+
+          ssh -vvv -i ~/.ssh/neutrix.key ${{ secrets.USERNAME }}@${{ env.HOST }}  "whoami"
     
   
