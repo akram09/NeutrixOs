@@ -37,6 +37,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.KEY }} 
+          known_hosts: unnecessary
       - name: executing remote ssh commands using ssh key
         run: |
           ssh  ${{ secrets.USERNAME }}@${{ env.HOST }} "whoami"
