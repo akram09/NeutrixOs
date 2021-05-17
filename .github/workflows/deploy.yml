@@ -42,11 +42,10 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             su -l <<! >/dev/null 2>&1
-            ${{ secrets.ROOTPASS }}
+            ${{ secrets.ROOT_PASS }}
             cd githubActions/NeutrixOs/
             git pull 
             ./buildNeutrixBuster.sh
-            ls > /dev/tty
             !
 
   
