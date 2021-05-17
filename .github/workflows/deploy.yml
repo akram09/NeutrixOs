@@ -50,11 +50,9 @@ jobs:
             git status
             git log
             ./buildNeutrixBuster.sh 
-            cd neutrixOS
-            ls -la > /dev/tty
             mv live-image-amd64.hybrid.iso neutrixOS-${{ github.run_number }}.iso
             cp ../buildVm.sh .
-            ../buildVm.sh neutrixOS-${{ github.run_number }}
+            ./buildVm.sh neutrixOS-${{ github.run_number }}
             !
 
   
