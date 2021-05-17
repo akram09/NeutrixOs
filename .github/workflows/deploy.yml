@@ -36,13 +36,13 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 600 ~/.ssh/staging.key
+          echo "$SSH_KEY" > ~/.ssh/neutrix.key
+          chmod 600 ~/.ssh/neutrix.key
           cat >>~/.ssh/config <<END
-          Host staging
+          Host neutrix
             HostName $SSH_HOST
             User $SSH_USER
-            IdentityFile ~/.ssh/staging.key
+            IdentityFile ~/.ssh/neutrix.key
             StrictHostKeyChecking no
           END
         env:
@@ -51,6 +51,6 @@ jobs:
           SSH_HOST: ${{ secrets.HOST }}
       - name: executing remote ssh commands using ssh key
         run: |
-          ssh  ${{ secrets.USERNAME }}@${{ env.HOST }} "whoami"
+          ssh  neutrix "whoami"
     
   
