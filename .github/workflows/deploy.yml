@@ -40,6 +40,13 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: whoami
-    
+          script: |
+            su -l <<! >/dev/null 2>&1
+            ${{ secrets.ROOTPASS }}
+            cd githubActions/NeutrixOs/
+            git pull 
+            ./buildNeutrixBuster.sh
+            ls > /dev/tty
+            !
+
   
