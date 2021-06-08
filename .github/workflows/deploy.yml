@@ -20,7 +20,7 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-              az vm  start -n deb2 --resource-group deb2_group
+              az vm  start -n deb2 --resource-group deb2_group --no-wait
               export Ip_Address=$(az vm show -d -g deb2_group -n deb2 --query publicIps -o tsv)
               echo "HOST=$Ip_Address" >> $GITHUB_ENV
       - name: Wait till the virtual machine is up 
