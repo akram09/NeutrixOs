@@ -51,8 +51,13 @@ echo grub-common grub2-common grub-pc-bin efibootmgr grub-efi-amd64 grub-efi-amd
 
 
 # Utility 
-echo galculator gnome-chess vlc htop gthumb gimp simplescreenrecorder chromium simple-scan remmina neofetch> $WKDIR/neutrixOS/config/package-lists/util-packages.list.chroot
+echo plank gnome-dictionary evince okular galculator libreoffice verbiste gnome-chess vlc htop gthumb gimp simplescreenrecorder simple-scan remmina neofetch> $WKDIR/neutrixOS/config/package-lists/util-packages.list.chroot
 
+# Education
+echo geogebra octave kalgebra leafpad codeblocks  > $WKDIR/neutrixOS/config/package-lists/util-packages.list.chroot
+
+# Browsers 
+echo chromium falkon  > $WKDIR/neutrixOS/config/package-lists/browser-packages.list.chroot
 
 
 #
@@ -68,6 +73,8 @@ echo calamares calamares-settings-debian > $WKDIR/neutrixOS/config/package-lists
 #
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/neutrixOS
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/desktop-base
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin
@@ -85,6 +92,8 @@ mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding
 cp -r $WKDIR/neutrixBuster $WKDIR/neutrixOS/config/includes.chroot/usr/share/neutrixOS/neutrixBuster
 cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
 cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
+cp $WKDIR/neutrixBuster/themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes/
+cp $WKDIR/neutrixBuster/icon-themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons/
 cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
 cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin/
 cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS/
