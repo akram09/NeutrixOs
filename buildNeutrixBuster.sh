@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# bldneutrixBuster -- Revision: 109r1 -- by neutrix (https://sourceforge.net/projects/neutrixos/)
+# bld neutrixBuster -- Revision: 109r1 -- by neutrix 
 # (GNU/General Public License version 3.0)
 #
 # Step by Step Live-Build
@@ -30,15 +30,37 @@ lb config --binary-images iso-hybrid --mode debian --architectures amd64 --linux
 # Phase 4: - Install desktop and applications
 #
 echo task-xfce-desktop > $WKDIR/neutrixOS/config/package-lists/desktop.list.chroot
-#
-echo haveged less orage gdebi galculator grsync psensor synaptic gparted bleachbit flac faad faac mjpegtools x265 x264 mpg321 ffmpeg streamripper sox mencoder dvdauthor twolame lame asunder aisleriot gnome-mahjongg gnome-chess dosbox libxvidcore4 vlc hplip-gui cdrdao frei0r-plugins htop jfsutils xfsprogs ntfs-3g cdtool mtools gthumb gimp testdisk numix-gtk-theme greybird-gtk-theme breeze-icon-theme breeze-gtk-theme xorriso cdrskin p7zip-full p7zip-rar keepassx hardinfo inxi gnome-disk-utility simplescreenrecorder chromium simple-scan remmina arc-theme gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-plugins-good gnome-system-tools dos2unix dialog papirus-icon-theme transmission-gtk handbrake handbrake-cli python-glade2 rar unrar cifs-utils fuse gvfs-fuse gvfs-backends gvfs-bin pciutils squashfs-tools syslinux syslinux-common dosfstools isolinux fakeroot linux-headers-amd64 lsb-release menu dkms wget iftop apt-transport-https dirmngr openvpn network-manager-openvpn openvpn-systemd-resolved libqt5opengl5 zulumount-gui zulucrypt-gui zulupolkit neofetch xscreensaver firmware-linux firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-bnx2 firmware-bnx2x firmware-brcm80211 firmware-ipw2x00 firmware-intelwimax firmware-iwlwifi firmware-libertas firmware-netxen firmware-zd1211 gnome-nettool guvcview > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
-#
+# Core Packages 
+echo less orage gdebi  psensor synaptic gparted bleachbit faad faac mjpegtools x265 x264 mpg321 ffmpeg streamripper dvdauthor lame asunder aisleriot gnome-mahjongg dosbox libxvidcore4 hplip-gui cdrdao frei0r-plugins  jfsutils xfsprogs ntfs-3g cdtool mtools testdisk xorriso cdrskin p7zip-full p7zip-rar keepassx hardinfo inxi gnome-disk-utility  gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-plugins-good gnome-system-tools dos2unix dialog handbrake handbrake-cli python-glade2 rar unrar cifs-utils fuse gvfs-fuse gvfs-backends gvfs-bin pciutils squashfs-tools syslinux syslinux-common dosfstools isolinux fakeroot linux-headers-amd64 lsb-release menu dkms wget iftop apt-transport-https dirmngr libqt5opengl5 zulumount-gui zulucrypt-gui zulupolkit xscreensaver firmware-linux firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-bnx2 firmware-bnx2x firmware-brcm80211 firmware-ipw2x00 firmware-intelwimax firmware-iwlwifi firmware-libertas firmware-netxen firmware-zd1211 gnome-nettool guvcview > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
+
+
+# Packages for desktop customization
+echo papirus-icon-theme arc-theme numix-gtk-theme greybird-gtk-theme breeze-icon-theme breeze-gtk-theme > $WKDIR/neutrixOS/config/package-lists/desktop-packages.list.chroot
+
+
+# Grub And Boot configuration Packages 
 echo grub-common grub2-common grub-pc-bin efibootmgr grub-efi-amd64 grub-efi-amd64-bin grub-efi-amd64-signed grub-efi-ia32-bin libefiboot1 libefivar1 mokutil shim-helpers-amd64-signed shim-signed-common shim-unsigned > $WKDIR/neutrixOS/config/package-lists/grubuefi.list.binary
+
+
+
+#################################################################
+#             Third Party Applications 
+#################################################################
+
+# Packages For different use cases 
+
+
+# Utility 
+echo galculator gnome-chess vlc htop gthumb gimp simplescreenrecorder chromium simple-scan remmina neofetch> $WKDIR/neutrixOS/config/package-lists/util-packages.list.chroot
+
+
+
 #
 # Uncomment below line include Broadcom wireless drivers
 # echo b43-fwcutter firmware-b43-installer firmware-b43legacy-installer  > $WKDIR/neutrixOS/config/package-lists/wifidrivers.list.chroots
 #
 # Uncomment below line for calamares installer
+
 echo calamares calamares-settings-debian > $WKDIR/neutrixOS/config/package-lists/calamares.list.chroot
 #
 #
