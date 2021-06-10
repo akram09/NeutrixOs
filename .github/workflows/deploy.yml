@@ -52,6 +52,7 @@ jobs:
             eval `ssh-agent -s`
             ssh-add id_rsa
             cd ~/githubActions/NeutrixOs/
+            git checkout xfce 
             rm -rf neutrixOS
             git pull 
             ./buildNeutrixBuster.sh 
