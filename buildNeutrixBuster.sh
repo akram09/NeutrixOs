@@ -93,8 +93,8 @@ mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding
 cp -r $WKDIR/neutrixBuster $WKDIR/neutrixOS/config/includes.chroot/usr/share/neutrixOS/neutrixBuster
 cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
 cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
-cp $WKDIR/neutrixBuster/themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes/
-cp $WKDIR/neutrixBuster/icon-themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons/
+cp -r $WKDIR/neutrixBuster/themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes/
+cp -r $WKDIR/neutrixBuster/icon-themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons/
 cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
 cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin/
 cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS/
