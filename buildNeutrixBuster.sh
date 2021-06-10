@@ -54,7 +54,7 @@ echo grub-common grub2-common grub-pc-bin efibootmgr grub-efi-amd64 grub-efi-amd
 echo plank gnome-dictionary evince okular galculator libreoffice verbiste gnome-chess vlc htop gthumb gimp simplescreenrecorder simple-scan remmina neofetch> $WKDIR/neutrixOS/config/package-lists/util-packages.list.chroot
 
 # Education
-echo geogebra octave kalgebra leafpad codeblocks  > $WKDIR/neutrixOS/config/package-lists/util-packages.list.chroot
+echo geogebra octave kalgebra leafpad codeblocks  > $WKDIR/neutrixOS/config/package-lists/edu-packages.list.chroot
 
 # Browsers 
 echo chromium falkon  > $WKDIR/neutrixOS/config/package-lists/browser-packages.list.chroot
