@@ -35,7 +35,7 @@ echo less orage gdebi  psensor synaptic gparted bleachbit faad faac mjpegtools x
 
 
 # Packages for desktop customization
-echo papirus-icon-theme arc-theme numix-gtk-theme greybird-gtk-theme breeze-icon-theme breeze-gtk-theme > $WKDIR/neutrixOS/config/package-lists/desktop-packages.list.chroot
+echo numix-icon-theme-circle appmenu-gtk-module-common appmenu-gtk2-module appmenu-gtk3-module  vala-panel vala-panel-appmenu xfce4-appmenu-plugin libgnome-menu-3-0 gnome-menus synaps  papirus-icon-theme arc-theme numix-gtk-theme greybird-gtk-theme breeze-icon-theme breeze-gtk-theme > $WKDIR/neutrixOS/config/package-lists/desktop-packages.list.chroot
 
 
 # Grub And Boot configuration Packages 
@@ -95,6 +95,9 @@ cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
 cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
 cp -r $WKDIR/neutrixBuster/themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes/
 cp -r $WKDIR/neutrixBuster/icon-themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons/
+# copy deb packages 
+cp -r $WKDIR/neutrixBuster/thirdParty/* $WKDIR/neutrixOS/config/packages.chroot/ 
+
 cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
 cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin/
 cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS/
