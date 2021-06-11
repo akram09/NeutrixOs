@@ -77,6 +77,7 @@ mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/desktop-base
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/backgrounds
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications
@@ -102,13 +103,14 @@ cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
 cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin/
 cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS/
 cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/desktop-base/
+cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/backgrounds/
 cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
 cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/
 ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop/
 #
 # Uncomment below three lines for calamares installer
 cp $WKDIR/neutrixBuster/calamares/settings.conf $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/settings.conf
-cp $WKDIR/neutrixBuster/calamares/usr/share/applications/install-debian.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/install-debian.desktop
+cp $WKDIR/neutrixBuster/calamares/usr/share/applications/install-neutrix.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/install-neutrix.desktop
 cp -r $WKDIR/neutrixBuster/calamares/branding/neutrixos $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding/neutrixos
 #
 #
