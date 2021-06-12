@@ -41,7 +41,7 @@ lb config --binary-images iso-hybrid \
             --apt-recommends false \
             --apt-secure false \
             --binary-images iso \
-            
+
 
 #
 #step 4 : installing the selected desktop environment and the applications 
@@ -189,7 +189,6 @@ mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop
 #
 cp -r $WKDIR/neutrixBuster $WKDIR/neutrixOS/config/includes.chroot/usr/share/neutrixOS/neutrixBuster
 cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
-cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
 cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
 cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin/
 cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS/
@@ -197,6 +196,21 @@ cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/us
 cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
 cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/
 ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop/
+
+
+case $DESKTOP_ENV in
+        "xfce")
+            cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
+
+            ;;
+        "lxqt")
+                #stuff to do is lxqt
+            ;;
+        
+         "lxqt")
+                #stuff to do is gnome 
+            ;;
+esac
 
 
 #TODO add misc64 deb packages include in the chroot environment 
