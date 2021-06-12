@@ -35,7 +35,7 @@ lb config --binary-images iso-hybrid \
     --iso-application neutrixOS \
     --iso-preparer neutrix-https://sourceforge.net/projects/neutrixos/ \
     --iso-publisher neutrix-https://sourceforge.net/projects/neutrixos/ \
-    --iso-volume neutrixOS
+    --iso-volume neutrixOS \
     --memtest none \
     --hdd-size 6 \
     --apt-recommends true \
@@ -73,7 +73,7 @@ echo less orage gdebi  \
     cifs-utils fuse gvfs-fuse \
     gvfs-backends gvfs-bin pciutils \
     squashfs-tools syslinux \
-    syslinux-common dosfstools _
+    syslinux-common dosfstools \
     isolinux fakeroot linux-headers-amd64 \
     lsb-release menu dkms wget iftop \
     apt-transport-https dirmngr \
@@ -244,6 +244,6 @@ esac
 #TODO add misc64 deb packages include in the chroot environment
 
 # step 7 starting the build process
-#lb build
+lb build
 
 echo "Build starting "
