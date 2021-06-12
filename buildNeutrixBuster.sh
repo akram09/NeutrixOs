@@ -35,12 +35,12 @@ lb config --binary-images iso-hybrid \
             --iso-application neutrixOS \
             --iso-preparer neutrix-https://sourceforge.net/projects/neutrixos/ \
             --iso-publisher neutrix-https://sourceforge.net/projects/neutrixos/ \
-            --iso-volume neutrixOS
+            --iso-volume neutrixOS \
             --memtest none \
             --hdd-size 6 \
             --apt-recommends false \
             --apt-secure false \
-            --binary-images iso \
+            --binary-images iso
 
 
 #
