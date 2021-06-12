@@ -35,12 +35,12 @@ lb config --binary-images iso-hybrid \
             --iso-application neutrixOS \
             --iso-preparer neutrix-https://sourceforge.net/projects/neutrixos/ \
             --iso-publisher neutrix-https://sourceforge.net/projects/neutrixos/ \
-            --iso-volume neutrixOS
+            --iso-volume neutrixOS \
             --memtest none \
             --hdd-size 6 \
-            --apt-recommends false \
+            --apt-recommends true \
             --apt-secure false \
-            --binary-images iso \
+            --binary-images iso
 
 
 #
@@ -49,6 +49,8 @@ lb config --binary-images iso-hybrid \
 echo "task-$DESKTOP_ENV-desktop" > $WKDIR/neutrixOS/config/package-lists/desktop.list.chroot
 #
 #
+# the apps to install : 
+
 echo haveged less \
         orage gdebi \
         galculator grsync \
@@ -121,7 +123,7 @@ echo haveged less \
         guvcview > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
 #
 
-# the apps to install : 
+# boot apps to install : 
 echo grub-common \
         grub2-common \
         grub-pc-bin \
