@@ -22,14 +22,15 @@ cd neutrixOS
 
 lb config --binary-images iso-hybrid \
             --mode debian \
+            --hdd-size 6 \
             --architectures amd64 \
             --linux-flavours amd64 \
             --distribution buster \
             --archive-areas "main contrib non-free" \
-            --updates true \
-            --security true \
+            --updates false \
+            --security false \
             --cache true \
-            --apt-recommends true \
+            --apt-recommends false \
             --debian-installer live \
             --debian-installer-gui true \
             --win32-loader false \
@@ -58,7 +59,7 @@ echo haveged less \
         asunder aisleriot \
         gnome-mahjongg gnome-chess \
         dosbox libxvidcore4 \
-        vlc hplip-gui \
+        vlc \
         cdrdao frei0r-plugins \
         htop jfsutils \
         xfsprogs ntfs-3g \
