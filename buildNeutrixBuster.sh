@@ -84,6 +84,13 @@ mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications
 mkdir -p $WKDIR/neutrixOS/config/hooks/normal
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop
+
+# create folder for lightdm config 
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/lightdm
+
+# create a folder for autostart applications 
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/autostart
+
 #
 # Uncomment below line for calamares installer
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding
@@ -93,9 +100,16 @@ mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding
 #
 cp -r $WKDIR/neutrixBuster $WKDIR/neutrixOS/config/includes.chroot/usr/share/neutrixOS/neutrixBuster
 cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
-cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
 cp -r $WKDIR/neutrixBuster/themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes/
 cp -r $WKDIR/neutrixBuster/icon-themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons/
+
+# copy xfce configuratioon files 
+cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
+cp -r $WKDIR/neutrixBuster/plank $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/plank
+cp -r $WKDIR/neutrixBuster/synapse $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/synapse
+
+# copy startup applications desktop 
+cp $WKDIR/neutrixBuster/autostart/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/autostart/
 # copy deb packages 
 cp -r $WKDIR/neutrixBuster/thirdParty/* $WKDIR/neutrixOS/config/packages.chroot/ 
 
@@ -107,11 +121,21 @@ cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/us
 cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
 cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/
 ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop/
+
+
+
 #
 # Uncomment below three lines for calamares installer
 cp $WKDIR/neutrixBuster/calamares/settings.conf $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/settings.conf
 cp $WKDIR/neutrixBuster/calamares/usr/share/applications/install-neutrix.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/install-neutrix.desktop
 cp -r $WKDIR/neutrixBuster/calamares/branding/neutrixos $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding/neutrixos
+#
+#copy lightdm configuration files
+
+cp $WKDIR/neutrixBuster/lightdm/* $WKDIR/neutrixOS/config/includes.chroot/etc/lightdm/
+
+
+
 #
 #
 # Uncomment below line IF you wish to include deb packages from misc64 folder

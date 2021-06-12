@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Synapse
+Comment=Search everything you do.
+Exec=synapse
+Icon=anoise
+Path=
+Terminal=false
+StartupNotify=false
