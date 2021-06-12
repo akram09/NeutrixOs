@@ -13,10 +13,12 @@
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
         <value type="int" value="8"/>
+        <value type="int" value="2"/>
         <value type="int" value="9"/>
         <value type="int" value="22"/>
         <value type="int" value="21"/>
         <value type="int" value="23"/>
+        <value type="int" value="3"/>
       </property>
       <property name="nrows" type="uint" value="1"/>
       <property name="background-alpha" type="uint" value="100"/>
@@ -51,5 +53,11 @@
       </property>
     </property>
     <property name="plugin-23" type="string" value="clock"/>
+    <property name="plugin-2" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="16234545441.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-3" type="string" value="launcher"/>
   </property>
 </channel>

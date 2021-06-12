@@ -7,8 +7,13 @@
 # get lightdm
 mkdir litarvan
 cd litarvan
-wget https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases/download/v3.2.0/lightdm-webkit-theme-litarvan-3.2.0.tar.gz
-tar -xf lightdm-webkit-theme-litarvan-3.2.0.tar.gz
+curl -s https://api.github.com/repos/akram09/NeutrixOs/releases/latest \
+| grep "browser_download_url.*tar.gz" \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| wget -qi -
+tar -xf lightdm-webkit-theme-litarvan-*.tar.gz
+rm lightdm-webkit-theme-litarvan-*.tar.gz
 cd ..
 mv litarvan /usr/share/lightdm-webkit/themes/
 #

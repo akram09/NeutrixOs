@@ -9,7 +9,7 @@ strings:
     shortVersion:        109
     versionedName:       neutrixOS 109
     shortVersionedName:  neutrixOS 109
-    bootloaderEntryName: Debian
+    bootloaderEntryName: Neutrix
     productUrl:          
     supportUrl:          
     releaseNotesUrl:     
