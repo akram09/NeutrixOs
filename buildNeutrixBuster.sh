@@ -36,98 +36,76 @@ else
     echo task-xfce-desktop > $WKDIR/neutrixOS/config/package-lists/desktop.list.chroot
 fi
 # Core Packages 
-echo less \
-    orage \
-    gdebi  \
-    psensor \
-    synaptic \
-    gparted \
-    bleachbit \ 
-    faad \
-    faac \
-    mjpegtools \
-    x265 \
-    x264 \
-    mpg321 \ 
-    ffmpeg \
-    streamripper \
-    dvdauthor \
-    lame \
-    asunder \
-    aisleriot \
-    gnome-mahjongg \
-    dosbox \
-    libxvidcore4 \
-    hplip-gui \
-    cdrdao \
-    frei0r-plugins \ 
-    jfsutils \
-    xfsprogs \
-    ntfs-3g \
-    cdtool \
-    mtools \
-    testdisk \
-    xorriso \
-    cdrskin \
-    p7zip-full \
-    p7zip-rar \
-    keepassx \
-    hardinfo \
-    inxi \
-    gnome-disk-utility \ 
-    gstreamer1.0-plugins-bad \
-    gstreamer1.0-plugins-ugly \
-    gstreamer1.0-plugins-good \
-    gnome-system-tools \
-    dos2unix \
-    dialog \
-    handbrake \
-    handbrake-cli \
-    python-glade2 \
-    rar \
-    unrar \
-    cifs-utils \
-    fuse \
-    gvfs-fuse \
-    gvfs-backends \
-    gvfs-bin \
-    pciutils \
-    squashfs-tools \
-    syslinux \
-    syslinux-common \
-    dosfstools \
-    isolinux \
-    fakeroot \
-    linux-headers-amd64 \
-    lsb-release \
-    menu \
-    dkms \
-    wget \
-    iftop \
-    apt-transport-https \
-    dirmngr \
-    libqt5opengl5 \
-    zulumount-gui \
-    zulucrypt-gui \
-    zulupolkit \
-    xscreensaver \
-    firmware-linux \
-    firmware-linux-nonfree \
-    firmware-misc-nonfree \
-    firmware-realtek \
-    firmware-atheros \
-    firmware-bnx2 \
-    firmware-bnx2x \
-    firmware-brcm80211 \
-    firmware-ipw2x00 \
-    firmware-intelwimax \
-    firmware-iwlwifi \
-    firmware-libertas \
-    firmware-netxen \
-    firmware-zd1211 \
-    gnome-nettool \
-    guvcview \
-    > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
+echo haveged less \
+        orage gdebi \
+        galculator grsync \
+        psensor synaptic \
+        gparted bleachbit \
+        flac faad \
+        faac mjpegtools \
+        x265 x264 \
+        mpg321 ffmpeg \
+        streamripper sox \
+        mencoder dvdauthor \
+        twolame lame \
+        asunder aisleriot \
+        gnome-mahjongg gnome-chess \
+        dosbox libxvidcore4 \
+        vlc \
+        cdrdao frei0r-plugins \
+        htop jfsutils \
+        xfsprogs ntfs-3g \
+        cdtool mtools \
+        gthumb gimp \
+        testdisk numix-gtk-theme \
+        greybird-gtk-theme breeze-icon-theme \
+        breeze-gtk-theme xorriso \
+        cdrskin p7zip-full \
+        p7zip-rar keepassx hardinfo \
+        inxi gnome-disk-utility \
+        simplescreenrecorder chromium \
+        simple-scan remmina arc-theme \
+        gstreamer1.0-plugins-bad \
+        gstreamer1.0-plugins-ugly \
+        gstreamer1.0-plugins-good \
+        gnome-system-tools \
+        dos2unix dialog papirus-icon-theme \
+        transmission-gtk handbrake \
+        handbrake-cli python-glade2 \
+        rar unrar cifs-utils fuse \
+        gvfs-fuse gvfs-backends \
+        gvfs-bin pciutils \
+        squashfs-tools \
+        syslinux \
+        syslinux-common \
+        dosfstools \
+        isolinux fakeroot \
+        linux-headers-amd64 \
+        lsb-release menu \
+        dkms wget iftop \
+        apt-transport-https \
+        dirmngr openvpn \
+        network-manager-openvpn \
+        openvpn-systemd-resolved \
+        libqt5opengl5 zulumount-gui \
+        zulucrypt-gui zulupolkit \
+        neofetch xscreensaver \
+        firmware-linux \
+        firmware-linux-nonfree \
+        firmware-misc-nonfree \
+        firmware-realtek \
+        firmware-atheros \
+        firmware-bnx2 \
+        firmware-bnx2x \
+        firmware-brcm80211 \
+        firmware-ipw2x00 \
+        firmware-intelwimax \
+        firmware-iwlwifi \
+        firmware-libertas \
+        firmware-netxen \
+        firmware-zd1211 \
+        gnome-nettool \
+        guvcview > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
 
 
 # Packages for desktop customization
@@ -177,7 +155,7 @@ echo grub-common \
 
 
 # Utility 
-echo plank 
+echo plank \
     gnome-dictionary \
     evince \
     okular \
@@ -187,8 +165,7 @@ echo plank
     gnome-chess \
     vlc \
     htop \
-    gthumb \ 
-    gimp \
+    gthumb gimp \
     simplescreenrecorder \
     simple-scan \
     remmina \
@@ -198,9 +175,8 @@ echo plank
 # TODO add leafpad
 # Education
 echo geogebra \
-    octave \
-    kalgebra \  
-    codeblocks \  
+    octave kalgebra \
+    codeblocks \
     > $WKDIR/neutrixOS/config/package-lists/edu-packages.list.chroot
 
 # Browsers 
@@ -242,7 +218,7 @@ cp -r $WKDIR/neutrixBuster $WKDIR/neutrixOS/config/includes.chroot/usr/share/neu
 cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
 if ([[ $# != 0 ]] && [[ $1 == "lxqt" ]])
 then
-    cp -r $WKDIR/neutrixBuster/lxqt $WKDIR/neutrixOS/config/includes.chroot/usr/share/
+    cp -r $WKDIR/neutrixBuster/lxqt/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/
 else
     cp -r $WKDIR/neutrixBuster/xfce4 $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config/xfce4
     cp -r $WKDIR/neutrixBuster/themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes/
@@ -255,7 +231,7 @@ cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
 cp $WKDIR/neutrixBuster/scripts/* $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin/
 cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS/
 cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/desktop-base/
-cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
+#cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
 cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/
 ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop/
 #
@@ -271,7 +247,7 @@ cp -r $WKDIR/neutrixBuster/calamares/branding/neutrixos $WKDIR/neutrixOS/config/
 #
 # Phase 7: - Start the build process
 #
-lb build
+#lb build
 #
 # Disclaimer:
 #
