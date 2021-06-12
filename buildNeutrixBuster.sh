@@ -22,7 +22,6 @@ cd neutrixOS
 
 lb config --binary-images iso-hybrid \
             --mode debian \
-            --hdd-size 6 \
             --architectures amd64 \
             --linux-flavours amd64 \
             --distribution buster \
@@ -30,7 +29,6 @@ lb config --binary-images iso-hybrid \
             --updates false \
             --security false \
             --cache true \
-            --apt-recommends false \
             --debian-installer live \
             --debian-installer-gui true \
             --win32-loader false \
@@ -38,6 +36,13 @@ lb config --binary-images iso-hybrid \
             --iso-preparer neutrix-https://sourceforge.net/projects/neutrixos/ \
             --iso-publisher neutrix-https://sourceforge.net/projects/neutrixos/ \
             --iso-volume neutrixOS
+            --memtest none \
+            --hdd-size 6 \
+            --apt-recommends false \
+            --apt-secure false \
+            --binary-images iso \
+            
+
 #
 #step 4 : installing the selected desktop environment and the applications 
 #
@@ -196,15 +201,6 @@ ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/
 
 #TODO add misc64 deb packages include in the chroot environment 
 
-
-
-
-echo "neutrixOs build will start in"
-for I in 5 4 3 2 1
-do 
-    sleep 1
-    echo $I
-done 
 
 
 # step 7 starting the build process
