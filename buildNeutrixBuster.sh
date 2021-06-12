@@ -38,7 +38,7 @@ lb config --binary-images iso-hybrid \
     --iso-volume neutrixOS
     --memtest none \
     --hdd-size 6 \
-    --apt-recommends false \
+    --apt-recommends true \
     --apt-secure false \
     --binary-images iso
 
