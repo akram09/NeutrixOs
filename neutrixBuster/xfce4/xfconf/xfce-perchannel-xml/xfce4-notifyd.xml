@@ -11,4 +11,7 @@
       <value type="string" value="xfdesktop"/>
     </property>
   </property>
+  <property name="plugin" type="empty">
+    <property name="log-only-today" type="bool" value="false"/>
+  </property>
 </channel>
