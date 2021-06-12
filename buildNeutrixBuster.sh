@@ -36,135 +36,135 @@ else
     echo task-xfce-desktop > $WKDIR/neutrixOS/config/package-lists/desktop.list.chroot
 fi
 # Core Packages 
-echo less 
-    orage 
-    gdebi  
-    psensor 
-    synaptic 
-    gparted 
-    bleachbit 
-    faad 
-    faac 
-    mjpegtools 
-    x265 
-    x264 
-    mpg321 
-    ffmpeg 
-    streamripper 
-    dvdauthor 
-    lame 
-    asunder 
-    aisleriot 
-    gnome-mahjongg 
-    dosbox 
-    libxvidcore4 
-    hplip-gui 
-    cdrdao 
-    frei0r-plugins  
-    jfsutils 
-    xfsprogs 
-    ntfs-3g 
-    cdtool 
-    mtools 
-    testdisk 
-    xorriso 
-    cdrskin 
-    p7zip-full 
-    p7zip-rar 
-    keepassx 
-    hardinfo 
-    inxi 
-    gnome-disk-utility  
-    gstreamer1.0-plugins-bad 
-    gstreamer1.0-plugins-ugly 
-    gstreamer1.0-plugins-good 
-    gnome-system-tools 
-    dos2unix 
-    dialog 
-    handbrake 
-    handbrake-cli 
-    python-glade2 
-    rar 
-    unrar 
-    cifs-utils 
-    fuse 
-    gvfs-fuse 
-    gvfs-backends 
-    gvfs-bin 
-    pciutils 
-    squashfs-tools 
-    syslinux 
-    syslinux-common 
-    dosfstools 
-    isolinux 
-    fakeroot 
-    linux-headers-amd64 
-    lsb-release 
-    menu 
-    dkms 
-    wget 
-    iftop 
-    apt-transport-https 
-    dirmngr 
-    libqt5opengl5 
-    zulumount-gui 
-    zulucrypt-gui 
-    zulupolkit 
-    xscreensaver 
-    firmware-linux 
-    firmware-linux-nonfree 
-    firmware-misc-nonfree 
-    firmware-realtek 
-    firmware-atheros 
-    firmware-bnx2 
-    firmware-bnx2x 
-    firmware-brcm80211 
-    firmware-ipw2x00 
-    firmware-intelwimax 
-    firmware-iwlwifi 
-    firmware-libertas 
-    firmware-netxen 
-    firmware-zd1211 
-    gnome-nettool 
-    guvcview 
+echo less \
+    orage \
+    gdebi  \
+    psensor \
+    synaptic \
+    gparted \
+    bleachbit \ 
+    faad \
+    faac \
+    mjpegtools \
+    x265 \
+    x264 \
+    mpg321 \ 
+    ffmpeg \
+    streamripper \
+    dvdauthor \
+    lame \
+    asunder \
+    aisleriot \
+    gnome-mahjongg \
+    dosbox \
+    libxvidcore4 \
+    hplip-gui \
+    cdrdao \
+    frei0r-plugins \ 
+    jfsutils \
+    xfsprogs \
+    ntfs-3g \
+    cdtool \
+    mtools \
+    testdisk \
+    xorriso \
+    cdrskin \
+    p7zip-full \
+    p7zip-rar \
+    keepassx \
+    hardinfo \
+    inxi \
+    gnome-disk-utility \ 
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-plugins-good \
+    gnome-system-tools \
+    dos2unix \
+    dialog \
+    handbrake \
+    handbrake-cli \
+    python-glade2 \
+    rar \
+    unrar \
+    cifs-utils \
+    fuse \
+    gvfs-fuse \
+    gvfs-backends \
+    gvfs-bin \
+    pciutils \
+    squashfs-tools \
+    syslinux \
+    syslinux-common \
+    dosfstools \
+    isolinux \
+    fakeroot \
+    linux-headers-amd64 \
+    lsb-release \
+    menu \
+    dkms \
+    wget \
+    iftop \
+    apt-transport-https \
+    dirmngr \
+    libqt5opengl5 \
+    zulumount-gui \
+    zulucrypt-gui \
+    zulupolkit \
+    xscreensaver \
+    firmware-linux \
+    firmware-linux-nonfree \
+    firmware-misc-nonfree \
+    firmware-realtek \
+    firmware-atheros \
+    firmware-bnx2 \
+    firmware-bnx2x \
+    firmware-brcm80211 \
+    firmware-ipw2x00 \
+    firmware-intelwimax \
+    firmware-iwlwifi \
+    firmware-libertas \
+    firmware-netxen \
+    firmware-zd1211 \
+    gnome-nettool \
+    guvcview \
     > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
 
 
 # Packages for desktop customization
-echo numix-icon-theme-circle 
-    appmenu-gtk-module-common 
-    appmenu-gtk2-module 
-    appmenu-gtk3-module  
-    vala-panel 
-    vala-panel-appmenu 
-    xfce4-appmenu-plugin 
-    libgnome-menu-3-0 
-    gnome-menus 
-    synapse  
-    papirus-icon-theme 
-    arc-theme 
-    numix-gtk-theme 
-    greybird-gtk-theme 
-    breeze-icon-theme 
-    breeze-gtk-theme 
+echo numix-icon-theme-circle \
+    appmenu-gtk-module-common \
+    appmenu-gtk2-module \
+    appmenu-gtk3-module  \
+    vala-panel \
+    vala-panel-appmenu \
+    xfce4-appmenu-plugin \
+    libgnome-menu-3-0 \
+    gnome-menus \
+    synapse \
+    papirus-icon-theme \
+    arc-theme \
+    numix-gtk-theme \
+    greybird-gtk-theme \
+    breeze-icon-theme \
+    breeze-gtk-theme \
     > $WKDIR/neutrixOS/config/package-lists/desktop-packages.list.chroot
 
 
 # Grub And Boot configuration Packages 
-echo grub-common 
-    grub2-common 
-    grub-pc-bin 
-    efibootmgr 
-    grub-efi-amd64 
-    grub-efi-amd64-bin 
-    grub-efi-amd64-signed 
-    grub-efi-ia32-bin 
-    libefiboot1 
-    libefivar1 
-    mokutil 
-    shim-helpers-amd64-signed 
-    shim-signed-common 
-    shim-unsigned 
+echo grub-common \
+    grub2-common \
+    grub-pc-bin \
+    efibootmgr \
+    grub-efi-amd64 \
+    grub-efi-amd64-bin \
+    grub-efi-amd64-signed \
+    grub-efi-ia32-bin \
+    libefiboot1 \
+    libefivar1 \
+    mokutil \
+    shim-helpers-amd64-signed \
+    shim-signed-common \
+    shim-unsigned \
     > $WKDIR/neutrixOS/config/package-lists/grubuefi.list.binary
 
 
@@ -178,34 +178,34 @@ echo grub-common
 
 # Utility 
 echo plank 
-    gnome-dictionary 
-    evince 
-    okular 
-    galculator 
-    libreoffice 
-    verbiste 
-    gnome-chess 
-    vlc 
-    htop 
-    gthumb 
-    gimp 
-    simplescreenrecorder 
-    simple-scan 
-    remmina 
-    neofetch
+    gnome-dictionary \
+    evince \
+    okular \
+    galculator \
+    libreoffice \
+    verbiste \
+    gnome-chess \
+    vlc \
+    htop \
+    gthumb \ 
+    gimp \
+    simplescreenrecorder \
+    simple-scan \
+    remmina \
+    neofetch \
     > $WKDIR/neutrixOS/config/package-lists/util-packages.list.chroot
 
 # TODO add leafpad
 # Education
-echo geogebra 
-    octave 
-    kalgebra  
-    codeblocks  
+echo geogebra \
+    octave \
+    kalgebra \  
+    codeblocks \  
     > $WKDIR/neutrixOS/config/package-lists/edu-packages.list.chroot
 
 # Browsers 
-echo chromium 
-    falkon  
+echo chromium \
+    falkon  \
     > $WKDIR/neutrixOS/config/package-lists/browser-packages.list.chroot
 
 
