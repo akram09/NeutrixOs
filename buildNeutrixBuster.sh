@@ -220,6 +220,6 @@ esac
 
 
 # step 7 starting the build process
-lb build
+#lb build
 
 echo "Build starting "
