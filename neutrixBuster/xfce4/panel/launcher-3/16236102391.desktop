@@ -1,0 +1,33 @@
+[Desktop Entry]
+Version=1.0
+Name=Remmina
+GenericName=Remote Desktop Client
+X-GNOME-FullName=Remmina Remote Desktop Client
+Comment=Connect to remote desktops
+TryExec=/usr/bin/remmina
+Exec=/usr/bin/remmina
+Icon=org.remmina.Remmina
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;X-GNOME-NetworkSettings;Network;
+Actions=Kiosk;Profile;Tray;Quit;
+Keywords=remote desktop;rdp;vnc;nx;ssh;spice;xdmcp;
+StartupWMClass=org.remmina.Remmina
+X-XFCE-Source=file:///usr/share/applications/org.remmina.Remmina.desktop
+
+[Desktop Action Profile]
+Name=Create a New Connection Profile
+Exec=/usr/bin/remmina --new
+
+[Desktop Action Kiosk]
+Name=Start Remmina in Kiosk mode
+Exec=/usr/bin/remmina --kiosk
+
+[Desktop Action Tray]
+Name=Start Remmina Minimized
+Exec=/usr/bin/remmina --icon
+
+[Desktop Action Quit]
+Name=Quit
+Exec=/usr/bin/remmina --quit
+OnlyShowIn=Unity;

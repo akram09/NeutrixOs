@@ -27,7 +27,7 @@
             <value type="uint" value="65535"/>
           </property>
           <property name="image-style" type="int" value="1"/>
-          <property name="last-image" type="string" value="/usr/share/images/desktop-base/default.png"/>
+          <property name="last-image" type="string" value="/usr/share/images/desktop-base/desktop-background"/>
         </property>
         <property name="workspace1" type="empty">
           <property name="color-style" type="int" value="1"/>

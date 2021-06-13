@@ -191,7 +191,7 @@ cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/
 cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/backgrounds/
 cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/backgrounds/
 cp -r $WKDIR/neutrixBuster/images/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/desktop-base/futureprototype-theme/
-#cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
+cp $WKDIR/neutrixBuster/assets/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
 cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/
 ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop/
 
