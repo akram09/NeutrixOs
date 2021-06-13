@@ -219,7 +219,9 @@ cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/
 # POSSIBILITY OF SUCH DAMAGE.
 #
 cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/backgrounds/
-cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
+cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/backgrounds/
+cp $WKDIR/neutrixBuster/images/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/desktop-base/futureprototype-theme/
+#cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
 cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/
 ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop/
 
@@ -237,7 +239,7 @@ case $DESKTOP_ENV in
             vala-panel vala-panel-appmenu \
             xfce4-appmenu-plugin libgnome-menu-3-0 \
             gnome-menus synapse \
-             numix-gtk-theme greybird-gtk-theme \
+            numix-gtk-theme greybird-gtk-theme \
             breeze-icon-theme breeze-gtk-theme >$WKDIR/neutrixOS/config/package-lists/desktop-xfce-packages.list.chroot
 
         # copy xfce configuratioon files
@@ -254,7 +256,8 @@ case $DESKTOP_ENV in
 
         ;;
     "lxqt")
-        #stuff to do is lxqt
+        # copy lxqt configuratioon files
+        cp -r $WKDIR/neutrixBuster/lxqt/* $WKDIR/neutrixOS/config/includes.chroot/
         ;;
 
     "lxqt")
