@@ -1,0 +1,23 @@
+#!/bin/bash
+
+archi=$(arch)
+
+if [ $archi = "x86_64" ]
+then
+        echo "Downloading amd64 version of Neutrix Kernel..."
+        wget https://github.com/akram09/NeutrixOs/releases/download/1.0/linux-image-4.19.181-neutrix_4.19.181-neutrix-2_amd64.deb
+        mv ./linux-image-4.19.181-neutrix_4.19.181-neutrix-2_amd64.deb neutrix-kernel.deb
+elif [ $archi = "i386" ]
+then
+        echo "Downloading i386 version of Neutrix Kernel..."
+        wget https://github.com/akram09/NeutrixOs/releases/download/1.0/linux-image-4.19.181-neutrix32_4.19.181-neutrix32-1_i386.deb
+        mv ./linux-image-4.19.181-neutrix32_4.19.181-neutrix32-1_i386.deb neutrix-kernel.deb
+else
+        echo "Architecture $archi is not supported yet, aborting"
+        exit
+fi
+
+echo "Updating kernel to Neutrix Kernel"
+dpkg -i ./neutrix-kernel.deb
+echo "finished, system will need to reboot"
+shutdown -r now
