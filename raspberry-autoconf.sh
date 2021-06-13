@@ -32,13 +32,13 @@ cp -r -f -v $WKDIR/neutrixBuster/thirdParty/* $WKDIR/neutrixOS/config/packages.c
 
 cp -r -f -v $WKDIR/neutrixBuster /usr/share/neutrixOS/neutrixBuster
 cp -r -f -v $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
-cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
-cp $WKDIR/neutrixBuster/scripts/* /usr/local/bin/
-cp $WKDIR/neutrixBuster/doc/* /usr/share/doc/neutrixOS/
-cp $WKDIR/neutrixBuster/backgrounds/* /usr/share/images/desktop-base/
-cp $WKDIR/neutrixBuster/backgrounds/* /usr/share/backgrounds/
-cp $WKDIR/neutrixBuster/icons/* /usr/share/icons/default/
-cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop /usr/share/applications/
+cp -r -f -v $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
+cp -r -f -v $WKDIR/neutrixBuster/scripts/* /usr/local/bin/
+cp -r -f -v $WKDIR/neutrixBuster/doc/* /usr/share/doc/neutrixOS/
+cp -r -f -v $WKDIR/neutrixBuster/backgrounds/* /usr/share/images/desktop-base/
+cp -r -f -v $WKDIR/neutrixBuster/backgrounds/* /usr/share/backgrounds/
+cp -r -f -v $WKDIR/neutrixBuster/icons/* /usr/share/icons/default/
+cp -r -f -v $WKDIR/neutrixBuster/launchers/ezadmin.desktop /usr/share/applications/
 ln -s /usr/share/doc/neutrixOS /etc/skel/Desktop/
 
 
@@ -63,16 +63,13 @@ cp -r -f -v $WKDIR/neutrixBuster/plank /etc/skel/.config/plank
 cp -r -f -v $WKDIR/neutrixBuster/synapse /etc/skel/.config/synapse
         
         # copy startup applications desktop
-cp $WKDIR/neutrixBuster/autostart/* /etc/skel/.config/autostart/
+cp -r -f -v $WKDIR/neutrixBuster/autostart/* /etc/skel/.config/autostart/
         
 
         #copy lightdm configuration files
-cp $WKDIR/neutrixBuster/lightdm/* /etc/lightdm/
+cp -r -f -v $WKDIR/neutrixBuster/lightdm/* /etc/lightdm/
 
 
 #TODO add misc64 deb packages include in the chroot environment
 
 # step 7 starting the build process
-lb build
-
-echo "Build starting "
