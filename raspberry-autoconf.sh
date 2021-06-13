@@ -2,35 +2,36 @@
 WKDIR="$(pwd)"
 # step 5 : creating the necessary foulders in the chroot environment
 
-mkdir -p /usr/share/neutrixOS
-mkdir -p /etc/skel/.config
-mkdir -p /usr/share/images/desktop-base
-mkdir -p /usr/share/icons/default
-mkdir -p /usr/share/backgrounds
-mkdir -p /usr/local/bin
-mkdir -p /usr/share/applications
-mkdir -p $WKDIR/neutrixOS/config/hooks/normal
-mkdir -p /usr/share/doc/neutrixOS
-mkdir -p /etc/skel/Desktop
+mkdir -p -v /usr/share/neutrixOS
+mkdir -p -v /etc/skel/.config
+mkdir -p -v /usr/share/images/desktop-base
+mkdir -p -v /usr/share/icons/default
+mkdir -p -v /usr/share/backgrounds
+mkdir -p -v /usr/local/bin
+mkdir -p -v /usr/share/applications
+mkdir -p -v $WKDIR/neutrixOS/config/hooks/normal
+mkdir -p -v /usr/share/doc/neutrixOS
+mkdir -p -v /etc/skel/Desktop
 
 # create config themes and icons 
-mkdir -p /etc/skel/.themes
-mkdir -p /etc/skel/.icons
+mkdir -p -v /etc/skel/.themes
+mkdir -p -v /etc/skel/.icons
 
+echo 
 #
 # step 6: - Copy files into the chroot
 #
 
 
 # copy themes and icons themes
-cp -r $WKDIR/neutrixBuster/themes/* /etc/skel/.themes/
-cp -r $WKDIR/neutrixBuster/icon-themes/* /etc/skel/.icons/
+cp -r -f -v $WKDIR/neutrixBuster/themes/* /etc/skel/.themes/
+cp -r -f -v $WKDIR/neutrixBuster/icon-themes/* /etc/skel/.icons/
 
 # copy deb packages
-cp -r $WKDIR/neutrixBuster/thirdParty/* $WKDIR/neutrixOS/config/packages.chroot/
+cp -r -f -v $WKDIR/neutrixBuster/thirdParty/* $WKDIR/neutrixOS/config/packages.chroot/
 
-cp -r $WKDIR/neutrixBuster /usr/share/neutrixOS/neutrixBuster
-cp -r $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
+cp -r -f -v $WKDIR/neutrixBuster /usr/share/neutrixOS/neutrixBuster
+cp -r -f -v $WKDIR/neutrixBuster/bootloaders $WKDIR/neutrixOS/config/bootloaders
 cp $WKDIR/neutrixBuster/hooks/* $WKDIR/neutrixOS/config/hooks/normal/
 cp $WKDIR/neutrixBuster/scripts/* /usr/local/bin/
 cp $WKDIR/neutrixBuster/doc/* /usr/share/doc/neutrixOS/
@@ -42,10 +43,10 @@ ln -s /usr/share/doc/neutrixOS /etc/skel/Desktop/
 
 
         # create folder for lightdm config
-mkdir -p /etc/lightdm
+mkdir -p -v /etc/lightdm
 
 # create a folder for autostart applications
-mkdir -p /etc/skel/.config/autostart
+mkdir -p -v /etc/skel/.config/autostart
 
 # Packages for xfce  desktop customization
 sudo apt install appmenu-gtk-module-common \
@@ -57,9 +58,9 @@ sudo apt install appmenu-gtk-module-common \
     breeze-icon-theme breeze-gtk-theme
 
         # copy xfce configuratioon files
-cp -r $WKDIR/neutrixBuster/xfce4 /etc/skel/.config/xfce4
-cp -r $WKDIR/neutrixBuster/plank /etc/skel/.config/plank
-cp -r $WKDIR/neutrixBuster/synapse /etc/skel/.config/synapse
+cp -r -f -v $WKDIR/neutrixBuster/xfce4 /etc/skel/.config/xfce4
+cp -r -f -v $WKDIR/neutrixBuster/plank /etc/skel/.config/plank
+cp -r -f -v $WKDIR/neutrixBuster/synapse /etc/skel/.config/synapse
         
         # copy startup applications desktop
 cp $WKDIR/neutrixBuster/autostart/* /etc/skel/.config/autostart/
