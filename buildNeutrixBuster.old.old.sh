@@ -49,19 +49,27 @@ echo "task-$DESKTOP_ENV-desktop" >$WKDIR/neutrixOS/config/package-lists/desktop.
 #
 #
 # Core Packages
-echo less gdebi  \
+echo less orage gdebi  \
     psensor synaptic \
-    gparted \
-    faad faac \
-    x265 x264 \
-    aisleriot \
-    libxvidcore4 \
-    p7zip-full \
-    p7zip-rar hardinfo \
-    gnome-disk-utility  \
-    gnome-system-tools \
-    dialog \
-    rar unrar \
+    gparted bleachbit \
+    faad faac mjpegtools \
+    x265 x264 mpg321 ffmpeg \
+    streamripper dvdauthor \
+    lame asunder aisleriot \
+    gnome-mahjongg dosbox \
+    libxvidcore4 hplip-gui \
+    cdrdao frei0r-plugins  \
+    jfsutils xfsprogs ntfs-3g \
+    cdtool mtools testdisk \
+    xorriso cdrskin p7zip-full \
+    p7zip-rar keepassx hardinfo \
+    inxi gnome-disk-utility  \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-plugins-good \
+    gnome-system-tools dos2unix \
+    dialog handbrake handbrake-cli \
+    python-glade2 rar unrar \
     cifs-utils fuse gvfs-fuse \
     gvfs-backends gvfs-bin pciutils \
     squashfs-tools syslinux \
@@ -69,13 +77,15 @@ echo less gdebi  \
     isolinux fakeroot linux-headers-amd64 \
     lsb-release menu dkms wget iftop \
     apt-transport-https dirmngr \
-    libqt5opengl5 \
-    firmware-linux \
+    libqt5opengl5 zulumount-gui \
+    zulucrypt-gui zulupolkit \
+    xscreensaver firmware-linux \
     firmware-linux-nonfree firmware-misc-nonfree \
     firmware-realtek firmware-atheros firmware-bnx2 \
     firmware-bnx2x firmware-brcm80211 firmware-ipw2x00 \
     firmware-intelwimax firmware-iwlwifi firmware-libertas \
-    firmware-netxen firmware-zd1211 > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
+    firmware-netxen firmware-zd1211 \
+    gnome-nettool guvcview > $WKDIR/neutrixOS/config/package-lists/packages.list.chroot
 #
 
 # Packages for desktop customization
@@ -91,8 +101,9 @@ echo numix-icon-theme-circle \
 # Utility
 echo plank gnome-dictionary \
     evince okular galculator \
-    gnome-chess libreoffice verbiste \
-    vlc htop \
+    libreoffice verbiste \
+    gnome-chess vlc htop \
+    gthumb gimp simplescreenrecorder \
     simple-scan remmina neofetch >$WKDIR/neutrixOS/config/package-lists/util-packages.list.chroot
 
 # the apps to install :
@@ -114,11 +125,12 @@ echo grub-common \
 
 # TODO add leafpad
 # Education
-echo geogebra octave kalgebra > $WKDIR/neutrixOS/config/package-lists/edu-packages.list.chroot
+echo geogebra octave kalgebra \
+  codeblocks  > $WKDIR/neutrixOS/config/package-lists/edu-packages.list.chroot
 
 
 # Browsers
-echo chromium  > $WKDIR/neutrixOS/config/package-lists/browser-packages.list.chroot
+echo chromium falkon  > $WKDIR/neutrixOS/config/package-lists/browser-packages.list.chroot
 
 
 #enabling Boradcom network drivers
