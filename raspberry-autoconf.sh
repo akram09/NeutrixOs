@@ -54,7 +54,7 @@ sudo apt install appmenu-gtk-module-common \
     vala-panel vala-panel-appmenu \
     xfce4-appmenu-plugin libgnome-menu-3-0 \
     gnome-menus synapse \
-        numix-gtk-theme greybird-gtk-theme \
+    numix-gtk-theme greybird-gtk-theme \
     breeze-icon-theme breeze-gtk-theme
 
         # copy xfce configuratioon files
@@ -73,3 +73,9 @@ cp -r -f -v $WKDIR/neutrixBuster/lightdm/* /etc/lightdm/
 #TODO add misc64 deb packages include in the chroot environment
 
 # step 7 starting the build process
+
+sudo apt install plank gnome-dictionary \
+    evince okular galculator \
+    gnome-chess libreoffice verbiste \
+    vlc htop \
+    simple-scan remmina neofetch
