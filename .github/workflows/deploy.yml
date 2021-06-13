@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Extract branch name
+          shell: bash
+          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          id: extract_branch
+      
       - name: Log in with Azure
         uses: azure/login@v1
         with:
@@ -52,12 +57,12 @@ jobs:
             eval `ssh-agent -s`
             ssh-add id_rsa
             cd ~/githubActions/NeutrixOs/
-            git checkout xfce 
+            git checkout deploy 
             rm -rf neutrixOS
             git pull 
             ./buildNeutrixBuster.sh 
             cd neutrixOS
-            mv live-image-amd64.hybrid.iso neutrixOS-${{ github.run_number }}.iso
+            mv live-image-amd64.iso neutrixOS-${{ github.run_number }}.iso
             cp ../buildVm.sh .
             ./buildVm.sh neutrixOS-${{ github.run_number }}
             !
