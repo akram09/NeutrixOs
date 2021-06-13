@@ -85,9 +85,8 @@ echo numix-icon-theme-circle \
     appmenu-gtk2-module appmenu-gtk3-module \
     vala-panel vala-panel-appmenu \
     xfce4-appmenu-plugin libgnome-menu-3-0 \
-    gnome-menus synapse papirus-icon-theme \
-    arc-theme numix-gtk-theme greybird-gtk-theme \
-    breeze-icon-theme breeze-gtk-theme >$WKDIR/neutrixOS/config/package-lists/desktop-packages.list.chroot
+    gnome-menus synapse \
+    numix-gtk-theme >$WKDIR/neutrixOS/config/package-lists/desktop-packages.list.chroot
 
 # Utility
 echo plank gnome-dictionary \
