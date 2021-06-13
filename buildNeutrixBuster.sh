@@ -52,6 +52,7 @@ echo "task-$DESKTOP_ENV-desktop" >$WKDIR/neutrixOS/config/package-lists/desktop.
 echo less gdebi  \
     psensor synaptic \
     gparted \
+    curl \
     faad faac \
     x265 x264 \
     aisleriot \
