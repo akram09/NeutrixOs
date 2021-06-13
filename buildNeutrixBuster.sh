@@ -150,12 +150,12 @@ if $CALAMARES_ENABLE -eq "true"; then
         >$WKDIR/neutrixOS/config/package-lists/calamares.list.chroot
 
     mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding
-
+    mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications
     cp $WKDIR/neutrixBuster/calamares/settings.conf \
         $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/settings.conf
 
-    cp $WKDIR/neutrixBuster/calamares/usr/share/applications/install-debian.desktop \
-        $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/install-debian.desktop
+    cp $WKDIR/neutrixBuster/calamares/usr/share/applications/install-neutrix.desktop \
+        $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/install-neutrix.desktop
 
     cp -r $WKDIR/neutrixBuster/calamares/branding/neutrixos \
         $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding/neutrixos
@@ -167,6 +167,8 @@ fi
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/neutrixOS
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.config
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/desktop-base
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/backgrounds
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/desktop-base/futureprototype-theme
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/backgrounds
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/local/bin
@@ -220,7 +222,7 @@ cp $WKDIR/neutrixBuster/doc/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/
 #
 cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/backgrounds/
 cp $WKDIR/neutrixBuster/backgrounds/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/images/backgrounds/
-cp $WKDIR/neutrixBuster/images/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/desktop-base/futureprototype-theme/
+cp -r $WKDIR/neutrixBuster/images/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/desktop-base/futureprototype-theme/
 #cp $WKDIR/neutrixBuster/icons/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/icons/default/
 cp $WKDIR/neutrixBuster/launchers/ezadmin.desktop $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/
 ln -s /usr/share/doc/neutrixOS $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop/
@@ -253,7 +255,6 @@ case $DESKTOP_ENV in
 
         #copy lightdm configuration files
         cp $WKDIR/neutrixBuster/lightdm/* $WKDIR/neutrixOS/config/includes.chroot/etc/lightdm/
-
         ;;
     "lxqt")
         # copy lxqt configuratioon files
