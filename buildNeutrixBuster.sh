@@ -142,8 +142,8 @@ if $CALAMARES_ENABLE -eq "true"; then
     cp $WKDIR/neutrixBuster/calamares/settings.conf \
         $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/settings.conf
 
-    cp $WKDIR/neutrixBuster/calamares/usr/share/applications/install-neutrix.desktop \
-        $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/install-neutrix.desktop
+    cp $WKDIR/neutrixBuster/calamares/usr/share/applications/install-debian.desktop \
+        $WKDIR/neutrixOS/config/includes.chroot/usr/share/applications/install-debian.desktop
 
     cp -r $WKDIR/neutrixBuster/calamares/branding/neutrixos \
         $WKDIR/neutrixOS/config/includes.chroot/etc/calamares/branding/neutrixos
