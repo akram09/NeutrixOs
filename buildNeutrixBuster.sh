@@ -165,6 +165,10 @@ mkdir -p $WKDIR/neutrixOS/config/hooks/normal
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/doc/neutrixOS
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/Desktop
 
+# plymouth configuration 
+mkdir -p $WKDIR/neutrixOS/config/includes.chroot/usr/share/plymouth/themes
+
+
 # create config themes and icons 
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes
 mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons
@@ -177,6 +181,10 @@ mkdir -p $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons
 # copy themes and icons themes
 cp -r $WKDIR/neutrixBuster/themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.themes/
 cp -r $WKDIR/neutrixBuster/icon-themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons/
+
+# copy plymouth 
+cp -r $WKDIR/neutrixBuster/plymouth/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/plymouth/themes/
+
 
 # copy deb packages
 cp -r $WKDIR/neutrixBuster/thirdParty/* $WKDIR/neutrixOS/config/packages.chroot/
