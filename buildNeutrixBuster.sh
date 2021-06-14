@@ -183,7 +183,7 @@ cp -r $WKDIR/neutrixBuster/themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/
 cp -r $WKDIR/neutrixBuster/icon-themes/* $WKDIR/neutrixOS/config/includes.chroot/etc/skel/.icons/
 
 # copy plymouth 
-cp -r $WKDIR/neutrixBuster/plymouth/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/plymouth/themes/
+cp -r $WKDIR/neutrixBuster/plymouth/* $WKDIR/neutrixOS/config/includes.chroot/usr/share/plymouth/
 
 
 # copy deb packages

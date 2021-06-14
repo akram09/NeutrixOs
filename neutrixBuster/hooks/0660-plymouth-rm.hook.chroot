@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+echo "PLYMOUTH, BITHC, EXCLUDING THEMES!"
+
+rm -rf /usr/share/plymouth/themes/{details,fade-in,glow,script,solar,spifinity,spinner,text,tribar}
