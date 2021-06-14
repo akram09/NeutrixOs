@@ -7,6 +7,7 @@
 # Remove Xsane
 apt-get -y purge xsane
 apt-get -y purge xsane-common
+apt-get purge firefox-esr
 #
 # Disclaimer:
 #
