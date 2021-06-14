@@ -6,7 +6,7 @@
     <property name="repeat_urgent_blink" type="empty"/>
     <property name="show_dock_shadow" type="empty"/>
     <property name="urgent_blink" type="empty"/>
-    <property name="workspace_count" type="empty"/>
+    <property name="workspace_count" type="int" value="1"/>
     <property name="activate_action" type="string" value="bring"/>
     <property name="borderless_maximize" type="bool" value="true"/>
     <property name="box_move" type="bool" value="false"/>
