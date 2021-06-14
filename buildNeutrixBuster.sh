@@ -118,7 +118,7 @@ echo geogebra octave kalgebra > $WKDIR/neutrixOS/config/package-lists/edu-packag
 
 
 # Browsers
-echo netsurf  > $WKDIR/neutrixOS/config/package-lists/browser-packages.list.chroot
+echo chromium  > $WKDIR/neutrixOS/config/package-lists/browser-packages.list.chroot
 
 
 #enabling Boradcom network drivers
